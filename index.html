@@ -300,41 +300,14 @@
                     <thead>
                         <tr>
                             <th>Fuente</th>
-                            <th>Madrid (Total)</th>
-                            <th>Sevilla (Total)</th>
+                            <th>Madrid (Total 2 personas)</th>
+                            <th>Sevilla (Total 2 personas)</th>
                             <th>Diferencia</th>
                             <th>Recomendación</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>GPT</td>
-                            <td>€3,074</td>
-                            <td>€3,182</td>
-                            <td>Madrid +€108</td>
-                            <td><span class="winner-badge winner-madrid">Madrid</span></td>
-                        </tr>
-                        <tr>
-                            <td>Gemini</td>
-                            <td>€6,350 (Est.)</td>
-                            <td>€5,400 (Est.)</td>
-                            <td>Sevilla -€950</td>
-                            <td><span class="winner-badge winner-sevilla">Sevilla</span></td>
-                        </tr>
-                        <tr>
-                            <td>Manus</td>
-                            <td>€4,365 (Prom.)</td>
-                            <td>€3,880 (Prom.)</td>
-                            <td>Sevilla -€485</td>
-                            <td><span class="winner-badge winner-sevilla">Sevilla</span></td>
-                        </tr>
-                        <tr>
-                            <td>Perplexity</td>
-                            <td>€5,420</td>
-                            <td>€5,071</td>
-                            <td>Sevilla -€349</td>
-                            <td><span class="winner-badge winner-sevilla">Sevilla</span></td>
-                        </tr>
+                    <tbody id="overview-table-body">
+                        <!-- Content will be injected by JavaScript -->
                     </tbody>
                 </table>
             </div>
@@ -648,6 +621,41 @@
             }
         }
 
+        function updateOverviewTable() {
+            const tbody = document.getElementById('overview-table-body');
+            const currSymbol = currentCurrency === 'USD' ? '$' : '€';
+
+            const models = [
+                { name: 'GPT', data: data.gpt, note: '' },
+                { name: 'Gemini', data: data.gemini, note: ' (Est.)' },
+                { name: 'Manus', data: data.manus, note: ' (Prom.)' },
+                { name: 'Perplexity', data: data.perplexity, note: '' }
+            ];
+
+            tbody.innerHTML = models.map(model => {
+                const madridTotal = currentCurrency === 'USD'
+                    ? Math.round(model.data.madrid.total * exchangeRate)
+                    : model.data.madrid.total;
+                const sevillaTotal = currentCurrency === 'USD'
+                    ? Math.round(model.data.sevilla.total * exchangeRate)
+                    : model.data.sevilla.total;
+                const diff = Math.abs(madridTotal - sevillaTotal);
+                const winner = madridTotal < sevillaTotal ? 'Madrid' : 'Sevilla';
+                const winnerClass = winner === 'Madrid' ? 'winner-madrid' : 'winner-sevilla';
+                const sign = madridTotal < sevillaTotal ? '+' : '-';
+
+                return `
+                    <tr>
+                        <td>${model.name}</td>
+                        <td>${currSymbol}${madridTotal.toLocaleString('en-US')}${model.note}</td>
+                        <td>${currSymbol}${sevillaTotal.toLocaleString('en-US')}${model.note}</td>
+                        <td>${winner} ${sign}${currSymbol}${diff.toLocaleString('en-US')}</td>
+                        <td><span class="winner-badge ${winnerClass}">${model.data.recommendation}</span></td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
         function toggleCurrency(currency) {
             if (currentCurrency === currency) return;
             currentCurrency = currency;
@@ -656,6 +664,9 @@
             document.querySelectorAll('.currency-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.textContent.includes(currency));
             });
+
+            // Update overview table
+            updateOverviewTable();
 
             // Refresh view
             if (currentSourceKey === 'overview') {
@@ -954,7 +965,10 @@
         }
 
         // Initialize
-        window.addEventListener('load', initCharts);
+        window.addEventListener('load', () => {
+            updateOverviewTable();
+            initCharts();
+        });
 
     </script>
 </body>

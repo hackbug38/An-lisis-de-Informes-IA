@@ -1,0 +1,155 @@
+{
+    "gpt": {
+        "name": "GPT",
+        "madrid": { "total": 3074, "flights": 375, "housing": 1400, "living": 844, "other": 455 },
+        "sevilla": { "total": 3182, "flights": 606, "housing": 854, "living": 826, "other": 896 },
+        "recommendation": "Madrid",
+        "analysis": "GPT favorece a Madrid principalmente por los vuelos directos más económicos y una ligera ventaja en el costo total estimado, aunque reconoce que el alojamiento en Sevilla es más barato.",
+        "quote": "Madrid obtiene mayor puntuación debido a su menor costo total y mejor conectividad aérea.",
+        "details": {
+            "flights": [
+                { "route": "Pekín -> Madrid", "airline": "China Southern", "price": "€375", "duration": "29h", "stops": "1 escala", "link": "https://us.trip.com/flights/beijing-to-madrid/airfares-bjs-mad/" },
+                { "route": "Pekín -> Madrid", "airline": "Etihad", "price": "€400", "duration": "33h", "stops": "1 escala", "link": "https://us.trip.com/flights/beijing-to-madrid/airfares-bjs-mad/" },
+                { "route": "Pekín -> Madrid", "airline": "Air China", "price": "€570", "duration": "12h", "stops": "Directo", "link": "https://www.farecompare.com/flights/Beijing-BJS/Madrid-MAD/market.html" },
+                { "route": "Pekín -> Sevilla", "airline": "Turkish Airlines", "price": "€606", "duration": "33h", "stops": "1 escala", "link": "https://sg.trip.com/flights/beijing-to-seville/airfares-bjs-svq/" }
+            ],
+            "housing": [
+                { "city": "Madrid", "type": "Estudio Cuatro Caminos", "price": "€1,400", "source": "Spotahome", "link": "https://www.spotahome.com/s/madrid" },
+                { "city": "Madrid", "type": "Estudio Sol", "price": "€1,200", "source": "Spotahome", "link": "https://www.spotahome.com/s/madrid" },
+                { "city": "Sevilla", "type": "Estudio Los Remedios", "price": "€800", "source": "Spotahome", "link": "https://www.spotahome.com/s/seville/for-rent:studios" },
+                { "city": "Sevilla", "type": "Estudio Triana", "price": "€1,280", "source": "Spotahome", "link": "https://www.spotahome.com/s/seville/for-rent:studios" }
+            ],
+            "living": {
+                "madrid": [
+                    { "item": "Supermercado + Comidas", "cost": "€490" },
+                    { "item": "Transporte", "cost": "€63.60" },
+                    { "item": "Amenidades", "cost": "€100" }
+                ],
+                "sevilla": [
+                    { "item": "Supermercado + Comidas", "cost": "€470" },
+                    { "item": "Transporte", "cost": "€66.40" },
+                    { "item": "Amenidades", "cost": "€100" }
+                ]
+            },
+            "links": [
+                { "title": "Trip.com Flights", "url": "https://us.trip.com/flights/beijing-to-madrid/airfares-bjs-mad/" },
+                { "title": "Numbeo Cost of Living Madrid", "url": "https://www.numbeo.com/cost-of-living/in/Madrid" },
+                { "title": "Global Citizen Solutions", "url": "https://www.globalcitizensolutions.com/spain-cost-of-living/" },
+                { "title": "Patrimonio Nacional", "url": "https://www.patrimonionacional.es/visita/palacio-real-de-madrid" }
+            ]
+        }
+    },
+    "gemini": {
+        "name": "Gemini",
+        "madrid": { "total": 6350, "flights": 1100, "housing": 2600, "living": 1350, "other": 1300 },
+        "sevilla": { "total": 5400, "flights": 1100, "housing": 1200, "living": 960, "other": 2140 },
+        "recommendation": "Sevilla",
+        "analysis": "Gemini propone una estrategia combinada pero concluye firmemente que Sevilla es más económica (ahorro ~970€). Destaca los precios inflados de Airbnb en Madrid.",
+        "quote": "Se recomienda firmemente la ciudad de Sevilla. Ahorro económico de aprox 970 €.",
+        "details": {
+            "flights": [
+                { "route": "Pekín -> Madrid", "airline": "Air China", "price": "$1,200 (2 pax)", "duration": "12h", "stops": "Directo", "link": "https://www.expedia.com/lp/flights/pek/mad/beijing-to-madrid" },
+                { "route": "Pekín -> Madrid", "airline": "Etihad/Qatar", "price": "$830-1300 (2 pax)", "duration": "18h+", "stops": "1 Escala", "link": "https://www.omio.com/flights/beijing/madrid-b9p7q" }
+            ],
+            "housing": [
+                { "city": "Madrid", "type": "Airbnb Chamberí/Salamanca", "price": "$2,800", "source": "Airbnb", "link": "https://www.airbnb.com/s/Madrid--Spain/homes" },
+                { "city": "Sevilla", "type": "Airbnb Triana (Post-Feria)", "price": "$1,200", "source": "Airbnb", "link": "https://www.airbnb.com/seville-spain/stays/monthly" }
+            ],
+            "living": {
+                "madrid": [
+                    { "item": "Supermercado", "cost": "$450" },
+                    { "item": "Restauración", "cost": "$800" },
+                    { "item": "Transporte", "cost": "$350" }
+                ],
+                "sevilla": [
+                    { "item": "Supermercado", "cost": "$350" },
+                    { "item": "Restauración", "cost": "$600" },
+                    { "item": "Transporte", "cost": "$200" }
+                ]
+            },
+            "links": [
+                { "title": "Expedia Air China", "url": "https://www.expedia.com/lp/flights/pek/mad/beijing-to-madrid" },
+                { "title": "Renfe Discounts", "url": "https://www.renfe.com/es/en/travel/prepare-your-trip/descuentos/mayores-de-60" },
+                { "title": "Numbeo Cost of Living", "url": "https://www.numbeo.com/cost-of-living/in/Madrid" },
+                { "title": "Catedral de Sevilla", "url": "https://www.catedraldesevilla.es/en/cultural-visit/schedules-and-rates/" }
+            ]
+        }
+    },
+    "manus": {
+        "name": "Manus",
+        "madrid": { "total": 4365, "flights": 1515, "housing": 1500, "living": 1350, "other": 0 },
+        "sevilla": { "total": 3880, "flights": 1920, "housing": 1000, "living": 960, "other": 0 },
+        "recommendation": "Sevilla",
+        "analysis": "Manus identifica que aunque los vuelos a Sevilla son más caros, el ahorro masivo en alojamiento y costo de vida compensa la diferencia, haciendo a Sevilla la ganadora.",
+        "quote": "Sevilla supera a Madrid como la opción más adecuada. Ahorro sustancial en alojamiento.",
+        "details": {
+            "flights": [
+                { "route": "Pekín -> Madrid", "airline": "Etihad", "price": "€1,288", "duration": "34h", "stops": "1 Escala", "link": "https://www.skyscanner.net" },
+                { "route": "Pekín -> Madrid", "airline": "Qatar Airways", "price": "€1,742", "duration": "20h", "stops": "1 Escala", "link": "https://www.skyscanner.net" },
+                { "route": "Pekín -> Sevilla", "airline": "Turkish Airlines", "price": "€1,920", "duration": "38h", "stops": "1 Escala", "link": "https://www.skyscanner.net" }
+            ],
+            "housing": [
+                { "city": "Madrid", "type": "Alquiler Tradicional", "price": "€1,200 - €1,800", "source": "Idealista", "link": "https://www.idealista.com" },
+                { "city": "Madrid", "type": "Airbnb Retiro", "price": "€1,600", "source": "Airbnb", "link": "https://www.airbnb.com" },
+                { "city": "Sevilla", "type": "Airbnb Triana", "price": "€1,200", "source": "Airbnb", "link": "https://www.airbnb.com" }
+            ],
+            "living": {
+                "madrid": [
+                    { "item": "Alimentación", "cost": "€700" },
+                    { "item": "Transporte", "cost": "€100" },
+                    { "item": "Ocio", "cost": "€400" }
+                ],
+                "sevilla": [
+                    { "item": "Alimentación", "cost": "€550" },
+                    { "item": "Transporte", "cost": "€60" },
+                    { "item": "Ocio", "cost": "€200" }
+                ]
+            },
+            "links": [
+                { "title": "Skyscanner", "url": "https://www.skyscanner.net" },
+                { "title": "Airbnb", "url": "https://www.airbnb.com" },
+                { "title": "Numbeo", "url": "https://www.numbeo.com" },
+                { "title": "Museo del Prado", "url": "https://www.museodelprado.es" }
+            ]
+        }
+    },
+    "perplexity": {
+        "name": "Perplexity",
+        "madrid": { "total": 5383, "flights": 1680, "housing": 1890, "living": 1236, "other": 577 },
+        "sevilla": { "total": 4774, "flights": 1950, "housing": 1320, "living": 992, "other": 512 },
+        "recommendation": "Sevilla",
+        "analysis": "Perplexity ofrece el desglose más detallado. Calcula un ahorro exacto del 11.3% en Sevilla, citando clima, compactibilidad y costos de vida como factores decisivos.",
+        "quote": "SEVILLA es la opción ganadora con puntuación ponderada 7.55/10 vs Madrid 7.40/10.",
+        "details": {
+            "flights": [
+                { "route": "Pekín -> Madrid", "airline": "Air China", "price": "€1,680", "duration": "13h 30m", "stops": "1 Escala", "link": "https://us.trip.com" },
+                { "route": "Pekín -> Madrid", "airline": "Lufthansa", "price": "€1,850", "duration": "15h 20m", "stops": "1 Escala", "link": "https://www.expedia.com" },
+                { "route": "Pekín -> Sevilla", "airline": "Iberia + Air China", "price": "€1,950", "duration": "16h 45m", "stops": "2 Escalas", "link": "https://us.trip.com" }
+            ],
+            "housing": [
+                { "city": "Madrid", "type": "Airbnb Plus Retiro", "price": "€2,100", "source": "Airbnb", "link": "https://www.airbnb.com" },
+                { "city": "Madrid", "type": "Spotahome Chamberí", "price": "€1,890", "source": "Spotahome", "link": "https://www.spotahome.com" },
+                { "city": "Sevilla", "type": "Airbnb Casco Antiguo", "price": "€1,320", "source": "Airbnb", "link": "https://www.airbnb.com" },
+                { "city": "Sevilla", "type": "Booking Nervión", "price": "€1,150", "source": "Booking.com", "link": "https://www.booking.com" }
+            ],
+            "living": {
+                "madrid": [
+                    { "item": "Alimentación (Super+Fuera)", "cost": "€805" },
+                    { "item": "Transporte", "cost": "€164" },
+                    { "item": "Amenidades", "cost": "€125" }
+                ],
+                "sevilla": [
+                    { "item": "Alimentación (Super+Fuera)", "cost": "€637" },
+                    { "item": "Transporte", "cost": "€110" },
+                    { "item": "Amenidades", "cost": "€86" }
+                ]
+            },
+            "links": [
+                { "title": "Trip.com", "url": "https://us.trip.com" },
+                { "title": "Booking.com", "url": "https://www.booking.com" },
+                { "title": "Carrefour.es", "url": "https://www.carrefour.es" },
+                { "title": "Patrimonio Nacional", "url": "https://www.patrimonionacional.es" }
+            ]
+        }
+    }
+}

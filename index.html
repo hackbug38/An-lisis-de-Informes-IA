@@ -908,7 +908,8 @@
                         <span style="font-weight: bold; color: ${h.city === 'Madrid' ? 'var(--accent-madrid)' : 'var(--accent-sevilla)'};">${h.city}</span>
                     </div>
                     <div style="color: var(--text-primary); margin-bottom: 0.5rem;">${h.type}</div>
-                    <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Precio mensual: <span style="font-weight: bold; color: #10b981; font-size: 1.1rem;">${priceDisplay}</span></div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.15rem;">Precio mensual (Total 2 personas):</div>
+                    <div style="font-size: 1.2rem; font-weight: bold; color: #10b981; margin-bottom: 0.5rem;">${priceDisplay}</div>
                     <div style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">Fuente: ${h.source}</div>
                     <a href="${h.link}" target="_blank" style="color: var(--accent-madrid); font-size: 0.85rem; text-decoration: none;">Ver propiedad &rarr;</a>
                 </div>
@@ -921,7 +922,8 @@
             const renderLivingList = (city, items, color) => {
                 return `
                 <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                    <h4 style="color: ${color}; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">${city}</h4>
+                    <h4 style="color: ${color}; margin-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">${city}</h4>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">Costos mensuales (Total 2 personas)</div>
                     ${items.map(i => {
                         let costDisplay;
                         if (typeof i.cost === 'number') {

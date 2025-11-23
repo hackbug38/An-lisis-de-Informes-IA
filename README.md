@@ -10,12 +10,21 @@ Este proyecto es un dashboard interactivo diseñado para visualizar y comparar p
 
 * **Comparativa de Costos**: Visualización clara de los costos totales estimados por cada IA.
 * **Desglose Detallado**:
-  * ✈️ **Vuelos**: Opciones de rutas desde Pekín, precios y aerolíneas.
-  * 🏠 **Alojamiento**: Comparativa entre Airbnb, hoteles y alquileres tradicionales.
-  * 🍽️ **Vida y Gastos**: Costos de alimentación, transporte y ocio.
-* **Selector de Moneda**: Alterna instantáneamente entre **Euros (€)** y **Dólares ($)** con una tasa de cambio fija (1.05).
+  * ✈️ **Vuelos**: Opciones de rutas desde Pekín con **precios por persona** y **total para 2 personas** claramente identificados.
+  * 🏠 **Alojamiento**: Comparativa entre Airbnb, hoteles y alquileres tradicionales con **precio mensual** explícito.
+  * 🍽️ **Vida y Gastos**: Costos de alimentación, transporte y ocio con desglose detallado.
+* **Selector de Moneda**: Alterna instantáneamente entre **Euros (€)** y **Dólares ($)** con conversión automática en todas las secciones (tasa de cambio: 1 EUR = 1.05 USD).
 * **Análisis de IA**: Resúmenes, recomendaciones y citas clave de cada modelo.
 * **Fuentes**: Enlaces directos a las referencias utilizadas (Skyscanner, Airbnb, Numbeo, etc.).
+
+## ✨ Características Técnicas
+
+* **Estructura de Datos Pura**: Todos los precios se almacenan como números puros con campo de moneda, eliminando bugs de formateo.
+* **Conversión Automática**: El toggle EUR/USD convierte todos los precios en tiempo real respetando la moneda original del dato.
+* **Etiquetas Explícitas**:
+  * Vuelos: "Precio por persona" y "Total 2 personas"
+  * Alojamiento: "Precio mensual"
+* **Validación de Datos**: Todos los valores han sido verificados contra los informes originales de cada IA.
 
 ## 🛠️ Tecnologías
 
@@ -26,4 +35,4 @@ Este proyecto es un dashboard interactivo diseñado para visualizar y comparar p
 ## 📂 Estructura del Proyecto
 
 * `index.html`: El núcleo de la aplicación, contiene toda la estructura, estilos y lógica.
-* `data.json`: Archivo auxiliar con los datos estructurados extraídos de los informes (para portabilidad).
+* Archivos `.txt`: Informes originales de cada modelo de IA (GPT, Gemini, Manus, Perplexity).

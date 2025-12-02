@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Presupuestos de Viaje: Madrid vs Valencia</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-madrid: #3b82f6;
+            --accent-valencia: #10b981;
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: var(--glass-border);
+            color: var(--text-secondary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            margin-top: 3rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: var(--glass-border);
+        }
+
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .winner-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .winner-madrid {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .winner-valencia {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .city-madrid { color: var(--accent-madrid); font-weight: 700; }
+        .city-valencia { color: var(--accent-valencia); font-weight: 700; }
+
+        .recommendation-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 4px solid var(--gradient-primary);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .currency-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .currency-btn {
+            background: transparent;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .currency-btn.active {
+            background: var(--text-secondary);
+            color: var(--bg-color);
+        }
+
+        /* Style for compare selector to avoid white/blank look on open */
+        #compare-category {
+            background: rgba(255,255,255,0.03);
+            color: var(--text-primary);
+            border: var(--glass-border);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none;
+        }
+
+        #compare-category option {
+            background: rgba(30,41,59,0.95);
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="fade-in">
+            <h1>Análisis de Presupuestos: Madrid vs Valencia</h1>
+            <p class="subtitle">Comparativa integral basada en informes de IA (GPT, Gemini, Manus, Perplexity)</p>
+        </header>
+
+        <div class="currency-toggle fade-in">
+            <button class="currency-btn active" onclick="toggleCurrency('EUR')">EUR (€)</button>
+            <button class="currency-btn" onclick="toggleCurrency('USD')">USD ($)</button>
+        </div>
+
+        <div class="nav-tabs fade-in">
+            <button class="nav-btn active" onclick="switchTab('overview', event)">Resumen General</button>
+            <button class="nav-btn" onclick="switchTab('gpt', event)">GPT</button>
+            <button class="nav-btn" onclick="switchTab('gemini', event)">Gemini</button>
+            <button class="nav-btn" onclick="switchTab('manus', event)">Manus</button>
+            <button class="nav-btn" onclick="switchTab('perplexity', event)">Perplexity</button>
+                <button class="nav-btn" onclick="switchTab('compare', event)">Comparar</button>
+        </div>
+
+        <!-- Overview Section -->
+        <div id="overview" class="tab-content fade-in">
+            <div class="dashboard-grid">
+                <div class="card" style="grid-column: span 2;">
+                    <div class="card-header">
+                        <h3 class="card-title">Comparativa de Costos Totales (EUR)</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="overviewChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Consenso de la IA</h3>
+                    </div>
+                        <div style="text-align: center; padding: 2rem 0;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🏆 Madrid</div>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">3 de 4 modelos recomiendan Madrid
+                                por costo y experiencia.</p>
+                            <div class="winner-badge winner-madrid">Mejor Opción Financiera</div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="card fade-in">
+                <div class="card-header">
+                    <h3 class="card-title">Hallazgos Clave</h3>
+                </div>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Fuente</th>
+                            <th><span class="city-madrid">Madrid</span> (Total 2 personas)</th>
+                            <th><span class="city-valencia">Valencia</span> (Total 2 personas)</th>
+                            <th>Diferencia</th>
+                            <th>Recomendación</th>
+                        </tr>
+                    </thead>
+                    <tbody id="overview-table-body">
+                        <!-- Content will be injected by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        
+        </div>
+
+        <!-- Individual Report Templates (Populated via JS) -->
+        <div id="detail-view" class="tab-content hidden fade-in">
+            <!-- Sub-navigation for details -->
+            <div class="nav-tabs" style="margin-bottom: 1.5rem; gap: 0.5rem;">
+                <button class="nav-btn sub-nav-btn active" onclick="switchSubTab('summary')">Resumen</button>
+                <button class="nav-btn sub-nav-btn" onclick="switchSubTab('flights')">✈️ Vuelos</button>
+                <button class="nav-btn sub-nav-btn" onclick="switchSubTab('housing')">🏠 Alojamiento</button>
+                <button class="nav-btn sub-nav-btn" onclick="switchSubTab('living')">🍽️ Vida y Gastos</button>
+                <button class="nav-btn sub-nav-btn" onclick="switchSubTab('links')">🔗 Fuentes</button>
+            </div>
+
+            <!-- Summary Sub-tab -->
+            <div id="subtab-summary" class="subtab-content">
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Madrid: Costo Total</h3>
+                        </div>
+                        <div class="metric-value" id="madrid-cost">€0</div>
+                        <div class="metric-label">Por mes (2 personas)</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Valencia: Costo Total</h3>
+                        </div>
+                        <div class="metric-value" id="valencia-cost">€0</div>
+                        <div class="metric-label">Por mes (2 personas)</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Ahorro Potencial</h3>
+                        </div>
+                        <div class="metric-value" id="savings-value">€0</div>
+                        <div class="metric-label" id="savings-label">A favor de...</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card" style="grid-column: span 2;">
+                        <div class="card-header">
+                            <h3 class="card-title">Desglose de Gastos</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="breakdownChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Análisis del Modelo</h3>
+                        </div>
+                        <div id="model-analysis" style="color: var(--text-secondary); line-height: 1.6;">
+                            <!-- Content injected via JS -->
+                        </div>
+                        <div id="model-recommendation" class="recommendation-box">
+                            <!-- Content injected via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flights Sub-tab -->
+            <div id="subtab-flights" class="subtab-content hidden">
+                <div class="dashboard-grid">
+                    <div class="card" style="grid-column: span 3;">
+                        <div class="card-header">
+                            <h3 class="card-title">Opciones de Vuelo (Pekín ↔ España)</h3>
+                        </div>
+                        <div id="flights-container" style="display: grid; gap: 1rem;">
+                            <!-- Injected via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Housing Sub-tab -->
+            <div id="subtab-housing" class="subtab-content hidden">
+                <div class="dashboard-grid">
+                    <div class="card" style="grid-column: span 3;">
+                        <div class="card-header">
+                            <h3 class="card-title">Opciones de Alojamiento (30 días)</h3>
+                        </div>
+                        <div id="housing-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <!-- Injected via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Living Sub-tab -->
+            <div id="subtab-living" class="subtab-content hidden">
+                <div class="dashboard-grid">
+                    <div class="card" style="grid-column: span 3;">
+                        <div class="card-header">
+                            <h3 class="card-title">Desglose de Costo de Vida</h3>
+                        </div>
+                        <div id="living-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <!-- Injected via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links Sub-tab -->
+            <div id="subtab-links" class="subtab-content hidden">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Fuentes y Referencias</h3>
+                    </div>
+                    <ul id="links-container" style="list-style: none; padding: 0; display: grid; gap: 0.5rem;">
+                        <!-- Injected via JS -->
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Compare by Category Tab -->
+        <div id="compare" class="tab-content hidden fade-in">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Comparar por categoría</h3>
+                </div>
+                <div style="display:flex; gap:1rem; align-items:center; margin:1rem 0 0.5rem 0;">
+                    <label for="compare-category" style="color:var(--text-secondary); font-weight:600;">Selecciona categoría:</label>
+                    <select id="compare-category" onchange="renderCompareChart(this.value)" style="padding:0.4rem 0.6rem; border-radius:6px; background:rgba(255,255,255,0.03); color:var(--text-primary); border:var(--glass-border)">
+                        <option value="flights">Vuelos</option>
+                        <option value="housing">Alojamiento</option>
+                        <option value="living">Vida</option>
+                        <option value="other">Otros</option>
+                    </select>
+                </div>
+                <div class="chart-container" style="margin-top:1rem;">
+                    <canvas id="compareChart"></canvas>
+                </div>
+                <div style="font-size:0.9rem;color:var(--text-secondary);margin-top:0.8rem;">La gráfica muestra, por modelo, el costo en Madrid vs Valencia para la categoría seleccionada.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Data extracted from the text files (adapted for Valencia)
+        const data = {
+            gpt: {
+                name: "GPT",
+                // Values aligned to `Madrid-Valencia GPT.txt` (component sums, margin excluded)
+                madrid: { total: 3291, flights: 1100, housing: 1100, living: 621, other: 470 },
+                valencia: { total: 3893, flights: 1300, housing: 1549, living: 574, other: 470 },
+                recommendation: "Madrid",
+                analysis: "Basado en la matriz de decisión y el presupuesto total (incluyendo margen), GPT recomienda Madrid por mejor relación vuelos/alojamiento y mayor oferta cultural para el perfil. Los valores mostrados reflejan componentes desglosados.",
+                quote: "La matriz ponderada y el presupuesto final favorecen Madrid como la opción recomendada para este viaje.",
+                details: {
+                    flights: [
+                        // Options extracted from `Madrid-Valencia GPT.txt` (prices per person where available)
+                        { route: "Pekín -> Madrid", airline: "Air China", pricePerPerson: 550, totalPrice: 1100, currency: "EUR", duration: "12-13h", stops: "Directo", link: "https://www.kayak.com" },
+                        { route: "Pekín -> Madrid", airline: "China Eastern (via Shanghai)", pricePerPerson: 600, totalPrice: 1200, currency: "EUR", duration: "20-24h", stops: "1 escala", link: "https://www.google.com/flights" },
+                        { route: "Pekín -> Madrid", airline: "Turkish Airlines (via IST)", pricePerPerson: 650, totalPrice: 1300, currency: "EUR", duration: "19-21h", stops: "1 escala", link: "https://www.turkishairlines.com" },
+                        { route: "Pekín -> Valencia", airline: "Air China + Iberia (via MAD)", pricePerPerson: 700, totalPrice: 1400, currency: "EUR", duration: "15-18h", stops: "1 escala (MAD)", link: "https://www.cleartrip.com" },
+                        { route: "Pekín -> Valencia", airline: "China Eastern (via Shanghai + MAD)", pricePerPerson: 750, totalPrice: 1500, currency: "EUR", duration: "22-26h", stops: "2 escalas", link: "https://www.google.com/flights" },
+                        { route: "Pekín -> Valencia", airline: "Emirates (via DXB + MAD)", pricePerPerson: 800, totalPrice: 1600, currency: "EUR", duration: "20-25h", stops: "1-2 escalas", link: "https://www.emirates.com" }
+                    ],
+                    housing: [
+                        { city: "Madrid", type: "Estudio Casa de Campo (ej.)", price: 1090, currency: "EUR", source: "Atemporalmadrid", link: "https://www.atemporalmadrid.es" },
+                        { city: "Madrid", type: "Media (presupuesto usado)", price: 1100, currency: "EUR", source: "Informe GPT (valor medio)", link: "https://www.idealista.com" },
+                        { city: "Madrid", type: "Apartahotel Alcobendas (ej.)", price: 1256, currency: "EUR", source: "Atemporalmadrid", link: "https://www.atemporalmadrid.es" },
+                        { city: "Valencia", type: "Estudio Benicalap", price: 870, currency: "EUR", source: "Spotahome", link: "https://www.spotahome.com" },
+                        { city: "Valencia", type: "Media estudios (Nestpick)", price: 1549, currency: "EUR", source: "Nestpick", link: "https://www.nestpick.com" },
+                        { city: "Valencia", type: "Aparthotel Centro (ej.)", price: 1200, currency: "EUR", source: "Booking/Momondo", link: "https://www.booking.com" }
+                    ],
+                    living: {
+                        madrid: [
+                            { item: "Supermercado (30d)", cost: 200, currency: "EUR" },
+                            { item: "Comidas fuera (selección moderada)", cost: 200, currency: "EUR" },
+                            { item: "Transporte (30d)", cost: 45, currency: "EUR" },
+                            { item: "Ocio / Amenidades (estimado)", cost: 176, currency: "EUR" }
+                        ],
+                        valencia: [
+                            { item: "Supermercado (30d)", cost: 180, currency: "EUR" },
+                            { item: "Comidas fuera (selección moderada)", cost: 164, currency: "EUR" },
+                            { item: "Transporte (estimado)", cost: 100, currency: "EUR" },
+                            { item: "Ocio / Amenidades (estimado)", cost: 130, currency: "EUR" }
+                        ]
+                    },
+                    links: [
+                        { title: "Trip.com Flights", url: "https://us.trip.com" },
+                        { title: "Numbeo Cost of Living", url: "https://www.numbeo.com/cost-of-living/in/" },
+                        { title: "Google Flights", url: "https://www.google.com/travel/flights" },
+                        { title: "Atemporalmadrid", url: "https://www.atemporalmadrid.es" },
+                        { title: "Idealista - mercado alojamiento", url: "https://www.idealista.com" }
+                    ]
+                }
+            },
+            gemini: {
+                name: "Gemini",
+                // Aligned with `Madrid-Valencia Gemini.txt` - Presupuesto consolidado línea 168 + vuelos línea 52
+                madrid: { total: 6000, flights: 2500, housing: 1600, living: 1200, other: 700 },
+                valencia: { total: 5550, flights: 2800, housing: 1150, living: 1110, other: 490 },
+                recommendation: "Madrid",
+                analysis: "Gemini prioriza la seguridad y la logística para viajeros sénior. El vuelo directo de Air China a Madrid minimiza riesgos médicos y logísticos para adultos mayores, justificando la diferencia de €450 como 'prima de seguro'.",
+                quote: "Madrid es recomendado: la seguridad logística del vuelo directo es el activo más valioso para el perfil senior, minimizando riesgos de eventos médicos adversos.",
+                details: {
+                    flights: [
+                        { route: "Pekín -> Madrid", airline: "Air China (directo)", pricePerPerson: 1250, totalPrice: 2500, currency: "EUR", duration: "12h 10m", stops: "Directo", link: "https://www.google.com/flights" },
+                        { route: "Pekín -> Madrid", airline: "Air China (rango bajo)", pricePerPerson: 1100, totalPrice: 2200, currency: "EUR", duration: "12h", stops: "Directo", link: "https://www.kayak.com" },
+                        { route: "Pekín -> Madrid", airline: "Air China (rango alto)", pricePerPerson: 1400, totalPrice: 2800, currency: "EUR", duration: "12h", stops: "Directo", link: "https://www.expedia.com" },
+                        { route: "Pekín -> Valencia", airline: "Lufthansa/Air France (vía hub)", pricePerPerson: 1400, totalPrice: 2800, currency: "EUR", duration: "17-21h", stops: "1 escala", link: "https://www.omio.com" },
+                        { route: "Pekín -> Valencia", airline: "Lufthansa (rango bajo)", pricePerPerson: 1200, totalPrice: 2400, currency: "EUR", duration: "16-20h", stops: "1 escala", link: "https://www.skyscanner.net" },
+                        { route: "Pekín -> Valencia", airline: "Premium Airlines (rango alto)", pricePerPerson: 1600, totalPrice: 3200, currency: "EUR", duration: "16-22h", stops: "1-2 escalas", link: "https://www.expedia.com" }
+                    ],
+                    housing: [
+                        { city: "Madrid", type: "Estudio Premium (Chamberí/Salamanca)", price: 1600, currency: "EUR", source: "Market Research/Flatio", link: "https://www.flatio.com" },
+                        { city: "Madrid", type: "Estudio céntrico (opción económica)", price: 1453, currency: "EUR", source: "Flatio/Spotahome", link: "https://www.spotahome.com" },
+                        { city: "Valencia", type: "Estudio Ruzafa (mensual)", price: 1150, currency: "EUR", source: "Airbnb/Nestpick", link: "https://www.airbnb.com" },
+                        { city: "Valencia", type: "Aparthotel (centro)", price: 1200, currency: "EUR", source: "Booking.com", link: "https://www.booking.com" }
+                    ],
+                    living: {
+                        madrid: [
+                            { item: "Alimentación (super + restaurantes)", cost: 1050, currency: "EUR" },
+                            { item: "Transporte Local", cost: 100, currency: "EUR" },
+                            { item: "Entradas y Cultura", cost: 150, currency: "EUR" },
+                            { item: "Otros (SIM, Seguro, Higiene)", cost: 150, currency: "EUR" },
+                            { item: "Margen Imprevistos (15%)", cost: 450, currency: "EUR" }
+                        ],
+                        valencia: [
+                            { item: "Alimentación (super + restaurantes)", cost: 880, currency: "EUR" },
+                            { item: "Transporte Local", cost: 80, currency: "EUR" },
+                            { item: "Entradas y Cultura", cost: 130, currency: "EUR" },
+                            { item: "Otros (SIM, Seguro, Higiene)", cost: 150, currency: "EUR" },
+                            { item: "Margen Imprevistos (15%)", cost: 360, currency: "EUR" }
+                        ]
+                    },
+                    links: [
+                        { title: "Gemini Report - Market Research", url: "#" },
+                        { title: "Flatio / Spotahome", url: "https://www.flatio.com" },
+                        { title: "Numbeo Cost of Living", url: "https://www.numbeo.com/cost-of-living/in/" },
+                        { title: "Skyscanner - Vuelos", url: "https://www.skyscanner.net" },
+                        { title: "Booking - Alojamiento", url: "https://www.booking.com" }
+                    ]
+                }
+            },
+            manus: {
+                name: "Manus",
+                // Aligned with `Madrid vs. Valencia-Manus.md` (totals = sum of components)
+                madrid: { total: 2920, flights: 1370, housing: 1000, living: 550, other: 0 },
+                valencia: { total: 3112, flights: 1692, housing: 800, living: 500, other: 120 },
+                recommendation: "Madrid",
+                analysis: "Según el informe, Madrid resulta la opción recomendada por el ahorro en transporte para mayores (+65) y una relación coste/beneficio favorable en vuelos y alojamiento.",
+                quote: "Madrid es la opción recomendada: transporte gratuito para seniors y vuelos más económicos reducen el coste total.",
+                details: {
+                    flights: [
+                        { route: "Pekín -> Madrid", airline: "Air China (directo, ejemplo)", pricePerPerson: 685, totalPrice: 1370, currency: "EUR", duration: "~15h", stops: "Directo", link: "https://www.google.com/travel/flights" },
+                        { route: "Pekín -> Madrid", airline: "China Eastern (via Shanghai)", pricePerPerson: 750, totalPrice: 1500, currency: "EUR", duration: "20-24h", stops: "1 escala", link: "https://www.skyscanner.net" },
+                        { route: "Pekín -> Valencia", airline: "Turkish Airlines", pricePerPerson: 800, totalPrice: 1600, currency: "EUR", duration: "36h", stops: "1 escala", link: "https://www.skyscanner.net" },
+                        { route: "Pekín -> Valencia", airline: "Etihad (via AUH+MAD)", pricePerPerson: 846, totalPrice: 1692, currency: "EUR", duration: "~17h", stops: "1-2 escalas", link: "https://www.google.com/travel/flights" }
+                    ],
+                    housing: [
+                        { city: "Madrid", type: "Estudio Casa de Campo (ej.)", price: 1000, currency: "EUR", source: "Idealista/Market", link: "https://www.idealista.com" },
+                        { city: "Madrid", type: "Apartamento Retiro (opción)", price: 1200, currency: "EUR", source: "Spotahome", link: "https://www.spotahome.com" },
+                        { city: "Valencia", type: "Estudio Benicalap", price: 870, currency: "EUR", source: "Spotahome", link: "https://www.spotahome.com" },
+                        { city: "Valencia", type: "Estudio Ruzafa (opción)", price: 1000, currency: "EUR", source: "Idealista", link: "https://www.idealista.com" }
+                    ],
+                    living: {
+                        madrid: [
+                            { item: "Alimentación (30d)", cost: 400, currency: "EUR" },
+                            { item: "Transporte (si aplica)", cost: 0, currency: "EUR" },
+                            { item: "Ocio / Restauración", cost: 150, currency: "EUR" }
+                        ],
+                        valencia: [
+                            { item: "Alimentación (30d)", cost: 380, currency: "EUR" },
+                            { item: "Transporte (estimado)", cost: 120, currency: "EUR" },
+                            { item: "Ocio / Restauración", cost: 200, currency: "EUR" }
+                        ]
+                    },
+                    links: [
+                        { title: "Fuentes: Google Flights / Idealista / Numbeo", url: "https://www.google.com/travel/flights" },
+                        { title: "Abono +65 Comunidad de Madrid (info)", url: "https://www.crtm.es/billetes-y-tarifas/billetes-y-abonos/abono-transportes/abono-plus65/" }
+                    ]
+                }
+            },
+            perplexity: {
+                name: "Perplexity",
+                // Aligned with `Madrid-Valencia Perplexity.md` (subtotal components, margin excluded)
+                madrid: { total: 3068, flights: 576, housing: 1312, living: 1060, other: 120 },
+                valencia: { total: 2746, flights: 574, housing: 1087, living: 965, other: 120 },
+                recommendation: "Valencia",
+                analysis: "Perplexity concluye que Valencia ofrece un ahorro neto por alojamiento y coste de vida; la recomendación sigue siendo Valencia según la suma de componentes y el margen aplicado en el informe.",
+                quote: "Valencia es la opción recomendada por mejor relación coste/calidad para el perfil senior.",
+                details: {
+                    flights: [
+                        { route: "Pekín -> Madrid", airline: "Ej. Air China", pricePerPerson: 288, totalPrice: 576, currency: "EUR", duration: "~15h", stops: "Directo/1 escala", link: "https://www.google.com/travel/flights" },
+                        { route: "Pekín -> Valencia", airline: "Ej. Conexión via MAD", pricePerPerson: 287, totalPrice: 574, currency: "EUR", duration: "~17h", stops: "1-2 escalas", link: "https://www.google.com/travel/flights" }
+                    ],
+                    housing: [
+                        { city: "Madrid", type: "Estudio (media)", price: 1312, currency: "EUR", source: "Market/Idealista", link: "https://www.idealista.com" },
+                        { city: "Valencia", type: "Estudio (media)", price: 1087, currency: "EUR", source: "Market/Nestpick", link: "https://www.nestpick.com" }
+                    ],
+                    living: {
+                        madrid: [
+                            { item: "Alimentación (30d)", cost: 520, currency: "EUR" },
+                            { item: "Transporte (30d)", cost: 110, currency: "EUR" },
+                            { item: "Amenidades / Otros", cost: 430, currency: "EUR" }
+                        ],
+                        valencia: [
+                            { item: "Alimentación (30d)", cost: 480, currency: "EUR" },
+                            { item: "Transporte (30d)", cost: 85, currency: "EUR" },
+                            { item: "Amenidades / Otros", cost: 400, currency: "EUR" }
+                        ]
+                    },
+                    links: [
+                        { title: "Perplexity Source - Report", url: "#" },
+                        { title: "Numbeo Cost of Living", url: "https://www.numbeo.com/cost-of-living/in/" },
+                        { title: "Idealista - Alojamiento", url: "https://www.idealista.com" },
+                        { title: "Skyscanner - Vuelos", url: "https://www.skyscanner.net" }
+                    ]
+                }
+            }
+        };
+
+        let overviewChartInstance = null;
+        let breakdownChartInstance = null;
+        let currentSourceKey = 'gpt'; // Default
+        let currentCurrency = 'EUR';
+        const exchangeRate = 1.05; // 1 EUR = 1.05 USD
+
+        function formatMoney(amount) {
+            // Handle string inputs like "€1,200" or "$1200"
+            let num = amount;
+            let isUSD = false;
+
+            if (typeof amount === 'string') {
+                isUSD = amount.includes('$');
+                num = parseFloat(amount.replace(/[^0-9.-]+/g, ""));
+            }
+
+            if (currentCurrency === 'USD') {
+                // If original was EUR, convert to USD
+                if (!isUSD) {
+                    num = num * exchangeRate;
+                }
+                return `$${Math.round(num).toLocaleString('en-US')}`;
+            } else {
+                // currentCurrency === 'EUR'
+                // If original was USD, convert to EUR
+                if (isUSD) {
+                    num = num / exchangeRate;
+                }
+                return `€${Math.round(num).toLocaleString('en-US')}`;
+            }
+        }
+
+        function updateOverviewTable() {
+            const tbody = document.getElementById('overview-table-body');
+            const currSymbol = currentCurrency === 'USD' ? '$' : '€';
+
+            const models = [
+                { name: 'GPT', data: data.gpt, note: '' },
+                { name: 'Gemini', data: data.gemini, note: ' (Est.)' },
+                { name: 'Manus', data: data.manus, note: ' (Prom.)' },
+                { name: 'Perplexity', data: data.perplexity, note: '' }
+            ];
+
+            tbody.innerHTML = models.map(model => {
+                const madridTotal = currentCurrency === 'USD'
+                    ? Math.round(model.data.madrid.total * exchangeRate)
+                    : model.data.madrid.total;
+                const valenciaTotal = currentCurrency === 'USD'
+                    ? Math.round(model.data.valencia.total * exchangeRate)
+                    : model.data.valencia.total;
+                const diff = Math.abs(madridTotal - valenciaTotal);
+                const winner = madridTotal < valenciaTotal ? 'Madrid' : 'Valencia';
+                const sign = madridTotal < valenciaTotal ? '+' : '-';
+                // Badge class reflects the MODEL recommendation, not the computed cheaper city
+                const badgeClass = (model.data.recommendation && model.data.recommendation.toLowerCase() === 'madrid') ? 'winner-madrid' : 'winner-valencia';
+
+                return `
+                    <tr>
+                        <td>${model.name}</td>
+                        <td>${currSymbol}${madridTotal.toLocaleString('en-US')}${model.note}</td>
+                        <td>${currSymbol}${valenciaTotal.toLocaleString('en-US')}${model.note}</td>
+                        <td>${winner} ${sign}${currSymbol}${diff.toLocaleString('en-US')}</td>
+                        <td><span class="winner-badge ${badgeClass}">${model.data.recommendation}</span></td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function toggleCurrency(currency) {
+            if (currentCurrency === currency) return;
+            currentCurrency = currency;
+
+            // Update buttons
+            document.querySelectorAll('.currency-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.includes(currency));
+            });
+
+            // Update overview table
+            updateOverviewTable();
+
+            // Refresh view
+            if (currentSourceKey === 'overview') {
+                // Re-render overview chart
+                initCharts();
+            } else {
+                updateDetailView(currentSourceKey);
+            }
+            // Always re-init charts to update labels/data
+            initCharts();
+            // If compare tab is visible, re-render compare chart with new currency
+            const compareEl = document.getElementById('compare');
+            if (compareEl && !compareEl.classList.contains('hidden')) {
+                const sel = document.getElementById('compare-category');
+                if (sel) renderCompareChart(sel.value);
+            }
+        }
+
+        function initCharts() {
+            // Overview Chart
+            const ctx = document.getElementById('overviewChart').getContext('2d');
+            if (overviewChartInstance) overviewChartInstance.destroy();
+
+            overviewChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['GPT', 'Gemini', 'Manus', 'Perplexity'],
+                    datasets: [
+                        {
+                            label: `Madrid (${currentCurrency})`,
+                            data: [
+                                data.gpt.madrid.total,
+                                data.gemini.madrid.total,
+                                data.manus.madrid.total,
+                                data.perplexity.madrid.total
+                            ].map(val => currentCurrency === 'USD' ? val * exchangeRate : val),
+                            backgroundColor: '#3b82f6',
+                            borderRadius: 6
+                        },
+                        {
+                            label: `Valencia (${currentCurrency})`,
+                            data: [
+                                data.gpt.valencia.total,
+                                data.gemini.valencia.total,
+                                data.manus.valencia.total,
+                                data.perplexity.valencia.total
+                            ].map(val => currentCurrency === 'USD' ? val * exchangeRate : val),
+                            backgroundColor: '#10b981',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#94a3b8' } }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#94a3b8' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function switchTab(tabId, event) {
+            // Update main buttons
+            document.querySelectorAll('.nav-tabs > .nav-btn:not(.sub-nav-btn)').forEach(btn => btn.classList.remove('active'));
+            if (event) {
+                event.target.classList.add('active');
+            }
+
+            // Show/Hide sections
+            if (tabId === 'overview') {
+                document.getElementById('overview').classList.remove('hidden');
+                document.getElementById('detail-view').classList.add('hidden');
+                const cmp = document.getElementById('compare'); if (cmp) cmp.classList.add('hidden');
+                initCharts();
+            } else if (tabId === 'compare') {
+                document.getElementById('overview').classList.add('hidden');
+                document.getElementById('detail-view').classList.add('hidden');
+                const cmp = document.getElementById('compare'); if (cmp) cmp.classList.remove('hidden');
+                currentSourceKey = 'compare';
+                const sel = document.getElementById('compare-category');
+                if (sel) renderCompareChart(sel.value);
+            } else {
+                document.getElementById('overview').classList.add('hidden');
+                const cmp = document.getElementById('compare'); if (cmp) cmp.classList.add('hidden');
+                document.getElementById('detail-view').classList.remove('hidden');
+                currentSourceKey = tabId;
+                updateDetailView(tabId);
+                // Reset to summary subtab
+                switchSubTab('summary');
+            }
+            // If currently in compare tab, ensure compare chart renders with current currency
+            if (currentSourceKey === 'compare') {
+                const sel2 = document.getElementById('compare-category');
+                if (sel2) renderCompareChart(sel2.value);
+            }
+        }
+
+        let compareChartInstance = null;
+        function renderCompareChart(category) {
+            const canvas = document.getElementById('compareChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            if (compareChartInstance) compareChartInstance.destroy();
+
+            const modelKeys = ['gpt', 'gemini', 'manus', 'perplexity'];
+            const labels = ['GPT', 'Gemini', 'Manus', 'Perplexity'];
+
+            const madridVals = modelKeys.map(k => {
+                const v = data[k].madrid[category];
+                const num = typeof v === 'number' ? v : 0;
+                return currentCurrency === 'USD' ? Math.round(num * exchangeRate) : num;
+            });
+
+            const valenciaVals = modelKeys.map(k => {
+                const v = data[k].valencia[category];
+                const num = typeof v === 'number' ? v : 0;
+                return currentCurrency === 'USD' ? Math.round(num * exchangeRate) : num;
+            });
+
+            compareChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        { label: `Madrid (${currentCurrency})`, data: madridVals, backgroundColor: '#3b82f6', borderRadius: 6 },
+                        { label: `Valencia (${currentCurrency})`, data: valenciaVals, backgroundColor: '#10b981', borderRadius: 6 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#94a3b8' } } },
+                    scales: {
+                        y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#94a3b8' } },
+                        x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
+                    }
+                }
+            });
+        }
+
+        function switchSubTab(subTabId) {
+            // Update sub-nav buttons
+            document.querySelectorAll('.sub-nav-btn').forEach(btn => btn.classList.remove('active'));
+            // Find the button that triggered this or matches the ID
+            const buttons = document.querySelectorAll('.sub-nav-btn');
+            if (subTabId === 'summary') buttons[0].classList.add('active');
+            if (subTabId === 'flights') buttons[1].classList.add('active');
+            if (subTabId === 'housing') buttons[2].classList.add('active');
+            if (subTabId === 'living') buttons[3].classList.add('active');
+            if (subTabId === 'links') buttons[4].classList.add('active');
+
+            // Hide all sub-content
+            document.querySelectorAll('.subtab-content').forEach(el => el.classList.add('hidden'));
+
+            // Show selected
+            document.getElementById(`subtab-${subTabId}`).classList.remove('hidden');
+        }
+
+        function updateDetailView(sourceKey) {
+            const sourceData = data[sourceKey];
+            const details = sourceData.details;
+
+            // --- Summary Tab Updates ---
+            document.getElementById('madrid-cost').textContent = formatMoney(sourceData.madrid.total);
+            document.getElementById('valencia-cost').textContent = formatMoney(sourceData.valencia.total);
+
+            const diff = sourceData.madrid.total - sourceData.valencia.total;
+            const winner = diff > 0 ? "Valencia" : "Madrid";
+            const savings = Math.abs(diff);
+
+            document.getElementById('savings-value').textContent = formatMoney(savings);
+            document.getElementById('savings-value').style.color = winner === "Valencia" ? "#10b981" : "#3b82f6";
+            document.getElementById('savings-label').textContent = `Ahorro eligiendo ${winner}`;
+
+            document.getElementById('model-analysis').textContent = sourceData.analysis;
+            document.getElementById('model-recommendation').innerHTML = `<strong>Recomendación:</strong> "${sourceData.quote}"`;
+
+            // Update Breakdown Chart
+            const ctx = document.getElementById('breakdownChart').getContext('2d');
+            if (breakdownChartInstance) breakdownChartInstance.destroy();
+
+            breakdownChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Vuelos', 'Alojamiento', 'Vida/Otros'],
+                    datasets: [
+                        {
+                            label: `Madrid (${currentCurrency})`,
+                            data: [
+                                sourceData.madrid.flights,
+                                sourceData.madrid.housing,
+                                sourceData.madrid.living + (sourceData.madrid.other || 0)
+                            ].map(val => currentCurrency === 'USD' ? val * exchangeRate : val),
+                            backgroundColor: '#3b82f6',
+                            borderRadius: 6
+                        },
+                        {
+                            label: `Valencia (${currentCurrency})`,
+                            data: [
+                                sourceData.valencia.flights,
+                                sourceData.valencia.housing,
+                                sourceData.valencia.living + (sourceData.valencia.other || 0)
+                            ].map(val => currentCurrency === 'USD' ? val * exchangeRate : val),
+                            backgroundColor: '#10b981',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#94a3b8' } } },
+                    scales: {
+                        y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#94a3b8' } },
+                        x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
+                    }
+                }
+            });
+
+            // --- Flights Tab Updates ---
+            const flightsContainer = document.getElementById('flights-container');
+            flightsContainer.innerHTML = details.flights.map(f => {
+                let perPersonPrice, totalPrice;
+
+                if (typeof f.pricePerPerson === 'number') {
+                    // Convert if needed based on current currency toggle
+                    let displayPerPerson = f.pricePerPerson;
+                    let displayTotal = f.totalPrice;
+
+                    if (currentCurrency === 'USD' && f.currency === 'EUR') {
+                        displayPerPerson = displayPerPerson * exchangeRate;
+                        displayTotal = displayTotal * exchangeRate;
+                    } else if (currentCurrency === 'EUR' && f.currency === 'USD') {
+                        displayPerPerson = displayPerPerson / exchangeRate;
+                        displayTotal = displayTotal / exchangeRate;
+                    }
+
+                    const currSymbol = currentCurrency === 'USD' ? '$' : '€';
+                    perPersonPrice = `${currSymbol}${Math.round(displayPerPerson).toLocaleString('en-US')}`;
+                    totalPrice = `${currSymbol}${Math.round(displayTotal).toLocaleString('en-US')}`;
+                } else {
+                    // Handle string ranges like "415-650"
+                    const symbol = f.currency === 'USD' ? '$' : '€';
+                    perPersonPrice = `${symbol}${f.pricePerPerson}`;
+                    totalPrice = `${symbol}${f.totalPrice}`;
+                }
+
+                return `
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="font-weight: bold; color: var(--text-primary);">${f.route}</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">${f.airline} • ${f.duration} • ${f.stops}</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Precio por persona: ${perPersonPrice}</div>
+                        <div style="font-size: 1.2rem; font-weight: bold; color: #10b981;">Total 2 personas: ${totalPrice}</div>
+                        <a href="${f.link}" target="_blank" style="color: var(--accent-madrid); font-size: 0.85rem; text-decoration: none;">Ver oferta &rarr;</a>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            // --- Housing Tab Updates ---
+            const housingContainer = document.getElementById('housing-container');
+            housingContainer.innerHTML = details.housing.map(h => {
+                const symbol = h.currency === 'USD' ? '$' : '€';
+                let priceDisplay;
+
+                if (typeof h.price === 'number') {
+                    // Convert if needed based on current currency toggle
+                    let displayPrice = h.price;
+                    if (currentCurrency === 'USD' && h.currency === 'EUR') {
+                        displayPrice = displayPrice * exchangeRate;
+                    } else if (currentCurrency === 'EUR' && h.currency === 'USD') {
+                        displayPrice = displayPrice / exchangeRate;
+                    }
+                    const currSymbol = currentCurrency === 'USD' ? '$' : '€';
+                    priceDisplay = `${currSymbol}${Math.round(displayPrice).toLocaleString('en-US')}`;
+
+                    // Add range if available
+                    if (h.priceRange) {
+                        priceDisplay += ` (${currSymbol}${h.priceRange})`;
+                    }
+                } else {
+                    priceDisplay = h.price;
+                }
+
+                return `
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span style="font-weight: bold; color: ${h.city === 'Madrid' ? 'var(--accent-madrid)' : 'var(--accent-valencia)'};">${h.city}</span>
+                    </div>
+                    <div style="color: var(--text-primary); margin-bottom: 0.5rem;">${h.type}</div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.15rem;">Precio mensual (Total 2 personas):</div>
+                    <div style="font-size: 1.2rem; font-weight: bold; color: #10b981; margin-bottom: 0.5rem;">${priceDisplay}</div>
+                    <div style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">Fuente: ${h.source}</div>
+                    <a href="${h.link}" target="_blank" style="color: var(--accent-madrid); font-size: 0.85rem; text-decoration: none;">Ver propiedad &rarr;</a>
+                </div>
+                `;
+            }).join('');
+
+            // --- Living Tab Updates ---
+            const livingContainer = document.getElementById('living-container');
+
+            const renderLivingList = (city, items, color) => {
+                // Sum numeric costs (assumed in EUR) and then convert for display
+                const sumEur = items.reduce((acc, i) => acc + (typeof i.cost === 'number' ? i.cost : 0), 0);
+                const displaySum = currentCurrency === 'USD' ? Math.round(sumEur * exchangeRate) : Math.round(sumEur);
+                const currSymbol = currentCurrency === 'USD' ? '$' : '€';
+
+                return `
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                    <h4 style="color: ${color}; margin-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">${city}</h4>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">Costos mensuales (Total 2 personas)</div>
+                    ${items.map(i => {
+                        let costDisplay;
+                        if (typeof i.cost === 'number') {
+                            // Convert if needed based on current currency toggle
+                            let displayCost = i.cost;
+                            if (currentCurrency === 'USD' && i.currency === 'EUR') {
+                                displayCost = displayCost * exchangeRate;
+                            } else if (currentCurrency === 'EUR' && i.currency === 'USD') {
+                                displayCost = displayCost / exchangeRate;
+                            }
+                            const currSymbolItem = currentCurrency === 'USD' ? '$' : '€';
+                            costDisplay = `${currSymbolItem}${Math.round(displayCost).toLocaleString('en-US')}`;
+                        } else {
+                            costDisplay = i.cost;
+                        }
+
+                        return `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                            <span style="color: var(--text-secondary);">${i.item}</span>
+                            <span style="font-weight: bold; color: #10b981;">${costDisplay}</span>
+                        </div>
+                        `;
+                    }).join('')}
+                    <div style="border-top:1px dashed rgba(255,255,255,0.06); margin-top:0.75rem; padding-top:0.75rem; display:flex; justify-content:space-between; font-weight:700; font-size:1rem;">
+                        <span style="color: var(--text-primary);">Total Vida</span>
+                        <span style="color: #3b82f6;">${currSymbol}${displaySum.toLocaleString('en-US')}</span>
+                    </div>
+                </div>
+                `;
+            };
+
+            livingContainer.innerHTML =
+                renderLivingList('Madrid', details.living.madrid, '#3b82f6') +
+                renderLivingList('Valencia', details.living.valencia, '#10b981');
+
+            // --- Links Tab Updates ---
+            const linksContainer = document.getElementById('links-container');
+            linksContainer.innerHTML = details.links.map(l => `
+                <li>
+                    <a href="${l.url}" target="_blank" style="display: block; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px; color: var(--text-primary); text-decoration: none; transition: background 0.2s;">
+                        🔗 ${l.title} <span style="color: var(--text-secondary); font-size: 0.8rem; margin-left: 0.5rem;">${l.url.substring(0, 40)}...</span>
+                    </a>
+                </li>
+            `).join('');
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            updateOverviewTable();
+            initCharts();
+        });
+
+    </script>
+</body>
+
+</html>

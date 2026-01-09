@@ -4,50 +4,57 @@ Este proyecto es un dashboard interactivo diseñado para visualizar y comparar p
 
 ## 🚀 Ver Online
 
-**[Madrid vs Sevilla](https://hackbug38.github.io/An-lisis-de-Informes-IA/)** | **[Madrid vs Valencia](https://hackbug38.github.io/An-lisis-de-Informes-IA/index_madrid_valencia.html)** | **[Alojamiento Detallado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_detallado.html)**
+**[Madrid vs Sevilla](https://hackbug38.github.io/An-lisis-de-Informes-IA/)** | **[Madrid vs Valencia](https://hackbug38.github.io/An-lisis-de-Informes-IA/index_madrid_valencia.html)**
 
 ## 🎯 Comparativas Disponibles
 
 ### 1. **Madrid vs Sevilla** (`index.html`)
+
 Análisis para viaje de un mes (2 adultos mayores) desde Pekín con enfoque en experiencia cultural y costos de vida.
 
 **Consenso IA:** 🏆 **Sevilla** (3 de 4 modelos)
+
 - Mejor relación calidad-precio
 - Alojamiento más económico
 - Costo de vida 6% menor
 
 ### 2. **Madrid vs Valencia** (`index_madrid_valencia.html`)
+
 Análisis detallado para adultos mayores con énfasis en seguridad logística y accesibilidad.
 
 **Consenso IA:** 🏆 **Madrid** (3 de 4 modelos)
+
 - Vuelo directo desde Pekín (Air China)
 - Mejor conectividad para perfil senior
 - Transporte público gratuito para +65 años
 
 ### 3. **Alojamiento Detallado** (`alojamiento_detallado.html`)
+
 Página interactiva para explorar alojamientos detallados con opciones de filtrado por fuente (GPT, Comet, Manus) y selector de moneda.
+
+**[Alojamiento Detallado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_detallado.html)**
 
 ## 📋 Funcionalidades
 
-* **Comparativa de Costos**: Visualización clara de los costos totales estimados por cada IA con gráficos interactivos.
-* **Desglose Detallado**:
-  * ✈️ **Vuelos**: Opciones de rutas desde Pekín con **precios por persona** y **total para 2 personas** claramente identificados.
-  * 🏠 **Alojamiento**: Comparativa entre estudios, Airbnb y alquileres con **precio mensual total para 2 personas**.
-  * 🍽️ **Vida y Gastos**: Costos de alimentación, transporte, amenidades culturales y otros con desglose completo.
-* **Selector de Moneda**: Alterna instantáneamente entre **Euros (€)** y **Dólares ($)** con conversión automática en todas las secciones (tasa de cambio: 1 EUR = 1.05 USD).
-* **Vista de Comparación**: Nueva pestaña "Comparar" que permite visualizar categorías específicas (vuelos, alojamiento, vida, otros) lado a lado entre modelos.
-* **Análisis de IA**: Resúmenes, recomendaciones y citas clave de cada modelo con contexto específico.
-* **Fuentes**: Enlaces directos a las referencias utilizadas (Skyscanner, Airbnb, Numbeo, Idealista, etc.).
+- **Comparativa de Costos**: Visualización clara de los costos totales estimados por cada IA con gráficos interactivos.
+- **Desglose Detallado**:
+  - ✈️ **Vuelos**: Opciones de rutas desde Pekín con **precios por persona** y **total para 2 personas** claramente identificados.
+  - 🏠 **Alojamiento**: Comparativa entre estudios, Airbnb y alquileres con **precio mensual total para 2 personas**.
+  - 🍽️ **Vida y Gastos**: Costos de alimentación, transporte, amenidades culturales y otros con desglose completo.
+- **Selector de Moneda**: Alterna instantáneamente entre **Euros (€)** y **Dólares ($)** con conversión automática en todas las secciones (tasa de cambio: 1 EUR = 1.05 USD).
+- **Vista de Comparación**: Nueva pestaña "Comparar" que permite visualizar categorías específicas (vuelos, alojamiento, vida, otros) lado a lado entre modelos.
+- **Análisis de IA**: Resúmenes, recomendaciones y citas clave de cada modelo con contexto específico.
+- **Fuentes**: Enlaces directos a las referencias utilizadas (Skyscanner, Airbnb, Numbeo, Idealista, etc.).
 
 ## ✨ Características Técnicas
 
-* **Estructura de Datos Pura**: Todos los precios se almacenan como números puros con campo de moneda, eliminando bugs de formateo.
-* **Conversión Automática**: El toggle EUR/USD convierte todos los precios en tiempo real respetando la moneda original del dato.
-* **Etiquetas Explícitas "2 personas"**:
-  * Vuelos: "Precio por persona: €XXX" y "Total 2 personas: €XXX"
-  * Alojamiento: "Precio mensual (Total 2 personas): €XXX"
-  * Vida y Gastos: "Costos mensuales (Total 2 personas)"
-* **Validación de Datos**:
+- **Estructura de Datos Pura**: Todos los precios se almacenan como números puros con campo de moneda, eliminando bugs de formateo.
+- **Conversión Automática**: El toggle EUR/USD convierte todos los precios en tiempo real respetando la moneda original del dato.
+- **Etiquetas Explícitas "2 personas"**:
+  - Vuelos: "Precio por persona: €XXX" y "Total 2 personas: €XXX"
+  - Alojamiento: "Precio mensual (Total 2 personas): €XXX"
+  - Vida y Gastos: "Costos mensuales (Total 2 personas)"
+- **Validación de Datos**:
   - ✅ Todos los valores verificados contra informes originales
   - ✅ Corrección de discrepancias en datos de Gemini (Madrid-Valencia)
   - ✅ Trazabilidad completa con referencias a líneas de archivos fuente
@@ -64,14 +71,14 @@ El proyecto incluye un proceso riguroso de validación de datos:
 
 ## 🛠️ Tecnologías
 
-* **HTML5 & CSS3**: Diseño moderno, responsivo y con animaciones suaves (Glassmorphism).
-* **JavaScript (Vanilla)**: Lógica para el cambio de pestañas, conversión de moneda, comparación entre categorías y renderizado dinámico.
-* **Chart.js**: Gráficos de barras interactivos con colores temáticos por ciudad.
-* **Google Fonts**: Tipografía Outfit para mejor legibilidad.
+- **HTML5 & CSS3**: Diseño moderno, responsivo y con animaciones suaves (Glassmorphism).
+- **JavaScript (Vanilla)**: Lógica para el cambio de pestañas, conversión de moneda, comparación entre categorías y renderizado dinámico.
+- **Chart.js**: Gráficos de barras interactivos con colores temáticos por ciudad.
+- **Google Fonts**: Tipografía Outfit para mejor legibilidad.
 
 ## 📂 Estructura del Proyecto
 
-```
+```bash
 .
 ├── index.html                          # Madrid vs Sevilla
 ├── index_madrid_valencia.html          # Madrid vs Valencia
@@ -89,6 +96,7 @@ El proyecto incluye un proceso riguroso de validación de datos:
 ## 🎨 Diseño
 
 El dashboard utiliza un diseño moderno con:
+
 - **Glassmorphism**: Tarjetas con efecto cristal y blur
 - **Gradientes**: Acentos con colores temáticos (azul para Madrid, verde para Valencia/Sevilla)
 - **Responsivo**: Adaptable a móviles, tablets y escritorio
@@ -98,21 +106,25 @@ El dashboard utiliza un diseño moderno con:
 ## 📊 Modelos de IA Analizados
 
 ### GPT-4
+
 - Enfoque en datos estructurados y matriz de decisión cuantitativa
 - Análisis detallado de opciones de vuelos y alojamiento
 - Recomendaciones basadas en ratios costo/beneficio
 
 ### Gemini
+
 - Análisis profundo de seguridad logística para perfil senior
 - Énfasis en vuelos directos y minimización de riesgos
 - Presupuestos con margen de imprevistos del 15%
 
 ### Manus
+
 - Perspectiva práctica con enfoque en transporte público gratuito
 - Cálculos optimizados para adultos mayores (+65 años)
 - Recomendaciones considerando beneficios por edad
 
 ### Perplexity
+
 - Desglose más detallado con múltiples fuentes verificadas
 - Análisis comparativo exhaustivo ciudad por ciudad
 - Puntuaciones ponderadas y matrices de decisión
@@ -120,11 +132,13 @@ El dashboard utiliza un diseño moderno con:
 ## ✨ Cambios Recientes
 
 ### Revisión de Enlaces de Alojamiento
+
 - Se identificaron **23 alojamientos** distribuidos entre 3 fuentes: GPT, Comet y Manus.
 - Se validaron los enlaces de Airbnb, Booking y otras plataformas.
 - Se documentaron inconsistencias en plataformas y enlaces rotos en `REVISION_ENLACES_ALOJAMIENTOS.md`.
 
 ### Actualización de `alojamiento_detallado.html`
+
 - Se añadió soporte para alternar entre fuentes de datos (GPT, Comet, Manus).
 - Se implementó un selector de moneda con conversión automática (EUR/USD).
 - Se mejoró la visualización de resultados con paginación y orden por precio.
@@ -151,6 +165,7 @@ npx http-server
 ```
 
 Accede a:
+
 - Madrid vs Sevilla: `http://localhost:8000/index.html`
 - Madrid vs Valencia: `http://localhost:8000/index_madrid_valencia.html`
 - Alojamiento Detallado: `http://localhost:8000/alojamiento_detallado.html`
@@ -176,19 +191,6 @@ Las contribuciones son bienvenidas. Para cambios importantes:
 
 Este proyecto es de código abierto y está disponible bajo la [Licencia MIT](LICENSE).
 
-## 👨‍💻 Autor
+### hackbug38
 
-**hackbug38**
 - GitHub: [@hackbug38](https://github.com/hackbug38)
-- Proyecto: [Análisis de Informes IA](https://github.com/hackbug38/An-lisis-de-Informes-IA)
-
-## 🙏 Agradecimientos
-
-- A los modelos de IA (GPT-4, Gemini, Manus, Perplexity) por proporcionar análisis detallados
-- A las plataformas de datos (Numbeo, Idealista, Skyscanner, Airbnb) por información de referencia
-- A la comunidad de GitHub Pages por el hosting gratuito
-
----
-
-**Última actualización:** Diciembre 2024
-**Versión:** 2.0 (Madrid-Valencia + Validación de Datos)

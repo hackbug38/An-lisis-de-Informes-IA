@@ -4,7 +4,7 @@ Este proyecto es un dashboard interactivo diseñado para visualizar y comparar p
 
 ## 🚀 Ver Online
 
-**[Madrid vs Sevilla](https://hackbug38.github.io/An-lisis-de-Informes-IA/)** | **[Madrid vs Valencia](https://hackbug38.github.io/An-lisis-de-Informes-IA/index_madrid_valencia.html)**
+**[Madrid vs Sevilla](https://hackbug38.github.io/An-lisis-de-Informes-IA/)** | **[Madrid vs Valencia](https://hackbug38.github.io/An-lisis-de-Informes-IA/index_madrid_valencia.html)** | **[Alojamiento Detallado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_detallado.html)**
 
 ## 🎯 Comparativas Disponibles
 
@@ -27,12 +27,6 @@ Análisis detallado para adultos mayores con énfasis en seguridad logística y 
 - Vuelo directo desde Pekín (Air China)
 - Mejor conectividad para perfil senior
 - Transporte público gratuito para +65 años
-
-### 3. **Alojamiento Detallado** (`alojamiento_detallado.html`)
-
-Página interactiva para explorar alojamientos detallados con opciones de filtrado por fuente (GPT, Comet, Manus) y selector de moneda.
-
-**[Alojamiento Detallado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_detallado.html)**
 
 ## 📋 Funcionalidades
 

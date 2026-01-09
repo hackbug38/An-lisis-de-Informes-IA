@@ -114,6 +114,18 @@ El dashboard utiliza un diseño moderno con:
 - Análisis comparativo exhaustivo ciudad por ciudad
 - Puntuaciones ponderadas y matrices de decisión
 
+## ✨ Cambios Recientes
+
+### Revisión de Enlaces de Alojamiento
+- Se identificaron **23 alojamientos** distribuidos entre 3 fuentes: GPT, Comet y Manus.
+- Se validaron los enlaces de Airbnb, Booking y otras plataformas.
+- Se documentaron inconsistencias en plataformas y enlaces rotos en `REVISION_ENLACES_ALOJAMIENTOS.md`.
+
+### Actualización de `alojamiento_detallado.html`
+- Se añadió soporte para alternar entre fuentes de datos (GPT, Comet, Manus).
+- Se implementó un selector de moneda con conversión automática (EUR/USD).
+- Se mejoró la visualización de resultados con paginación y orden por precio.
+
 ## 🚀 Uso Local
 
 Para ejecutar el proyecto localmente:

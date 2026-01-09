@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alojamiento Detallado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-gpt: #3b82f6;
+            --accent-comet: #10b981;
+            --accent-manus: #f59e0b;
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .source-toggle {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .currency-toggle {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: var(--glass-border);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.4rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .sort-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .sort-row select {
+            background: rgba(255,255,255,0.03);
+            color: var(--text-primary);
+            border: var(--glass-border);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .result-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .result-title {
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .result-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .result-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #10b981;
+            margin-top: 0.5rem;
+        }
+
+        .result-link {
+            display: inline-block;
+            margin-top: 0.6rem;
+            color: var(--accent-gpt);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .pagination span {
+            color: var(--text-secondary);
+            padding: 0.4rem 0.6rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Alojamiento Detallado</h1>
+            <p class="subtitle">Selecciona la fuente y revisa los alojamientos. Orden por precio de menor a mayor.</p>
+        </header>
+
+        <div class="card">
+            <div class="currency-toggle">
+                <button class="nav-btn active" data-currency="EUR" onclick="setCurrency('EUR')">EUR</button>
+                <button class="nav-btn" data-currency="USD" onclick="setCurrency('USD')">USD</button>
+            </div>
+            <div class="source-toggle">
+                <button class="nav-btn active" data-source="gpt" onclick="switchSource('gpt')">GPT</button>
+                <button class="nav-btn" data-source="comet" onclick="switchSource('comet')">Comet</button>
+                <button class="nav-btn" data-source="manus" onclick="switchSource('manus')">Manus</button>
+            </div>
+
+            <div class="sort-row">
+                <label for="price-sort">Orden:</label>
+                <select id="price-sort">
+                    <option value="price_asc">Precio (menor a mayor)</option>
+                </select>
+            </div>
+
+            <div id="results" class="results-grid"></div>
+            <div id="pagination" class="pagination"></div>
+        </div>
+    </div>
+
+    <script>
+        const PAGE_SIZE = 6;
+        const state = {
+            currentSource: 'gpt',
+            data: {
+                gpt: [],
+                comet: [],
+                manus: []
+            },
+            page: {
+                gpt: 1,
+                comet: 1,
+                manus: 1
+            },
+            loading: {
+                gpt: false,
+                comet: false,
+                manus: false
+            }
+        };
+
+        let currentCurrency = 'EUR';
+        const exchangeRate = 1.05;
+
+        const sourceFiles = {
+            gpt: 'Alojamiento/resultados GPT.json',
+            comet: 'Alojamiento/Alojamientos Comet.json',
+            manus: 'Alojamiento/alojamientos_madrid Manus.json'
+        };
+
+        function getFirstDefined(obj, keys) {
+            for (const key of keys) {
+                if (obj && obj[key] != null) return obj[key];
+            }
+            return null;
+        }
+
+        async function fetchJsonWithFallback(path) {
+            const candidates = [
+                new URL(path, window.location.href).toString(),
+                encodeURI(path),
+                path
+            ];
+            let lastErr = null;
+            for (const url of candidates) {
+                try {
+                    const res = await fetch(url);
+                    if (!res.ok) {
+                        lastErr = new Error(`HTTP ${res.status} al cargar ${url}`);
+                        continue;
+                    }
+                    return await res.json();
+                } catch (err) {
+                    lastErr = err;
+                }
+            }
+            throw lastErr || new Error('No se pudo cargar el JSON');
+        }
+
+        function getCometPrice(p) {
+            if (!p || !p.precio) return null;
+            if (typeof p.precio.costo_total_final_euros === 'number') return p.precio.costo_total_final_euros;
+            if (typeof p.precio.total_30_noches === 'number') return p.precio.total_30_noches;
+            if (typeof p.precio.precio_por_noche === 'string') {
+                const num = parseFloat(p.precio.precio_por_noche.replace(/[^0-9.,-]+/g, '').replace(',', '.'));
+                if (!isNaN(num)) return Math.round(num * 30);
+            }
+            return null;
+        }
+
+        function normalizeAlojamiento(source, item, idx) {
+            if (source === 'comet') {
+                return {
+                    id: item.id != null ? String(item.id) : `comet_${idx}`,
+                    nombre: item.nombre_listado || `Listado ${idx + 1}`,
+                    barrio: item.ubicacion && item.ubicacion.barrio,
+                    distrito: item.ubicacion && item.ubicacion.distrito,
+                    descripcion: item.descripcion_corta || '',
+                    precio: getCometPrice(item),
+                    rating: item.calificaciones && item.calificaciones.calificacion_general,
+                    camas: item.especificaciones && item.especificaciones.camas,
+                    comodidades: (item.especificaciones && item.especificaciones.amenities) || [],
+                    url: item.url_airbnb || '#'
+                };
+            }
+
+            if (source === 'gpt') {
+                const precioDet = item.precio_detallado || {};
+                return {
+                    id: item.nombre_listado ? item.nombre_listado.replace(/\s+/g, '_') + '_' + idx : `gpt_${idx}`,
+                    nombre: item.nombre_listado || item.nombre || `Listado ${idx + 1}`,
+                    barrio: item.ubicacion_exacta && item.ubicacion_exacta.barrio,
+                    distrito: item.ubicacion_exacta && item.ubicacion_exacta.distrito,
+                    descripcion: item.descripcion_corta || '',
+                    precio: precioDet.costo_total_final_euros || precioDet.total_30_noches || null,
+                    rating: item.calificaciones && item.calificaciones.calificacion_general,
+                    camas: Array.isArray(item.configuracion_camas) ? item.configuracion_camas.length : null,
+                    comodidades: (item.especificaciones && item.especificaciones.amenities) || [],
+                    url: (item.enlaces && (item.enlaces.url_listado_airbnb || item.enlaces.url)) || '#'
+                };
+            }
+
+            const rawUbic = getFirstDefined(item, ['ubicaci\u00f3n', 'ubicacion', 'ubicaci\u00a2n']) || '';
+            const barrio = rawUbic.split(',')[0].trim() || rawUbic;
+            return {
+                id: item.id != null ? String(item.id) : `manus_${idx}`,
+                nombre: item.nombre || `Listado ${idx + 1}`,
+                barrio: barrio,
+                distrito: rawUbic,
+                descripcion: item.accesibilidad || '',
+                precio: item.precio_total || null,
+                rating: getFirstDefined(item, ['puntuaci\u00f3n', 'puntuacion', 'puntuaci\u00a2n']),
+                camas: item.camas || null,
+                comodidades: item.comodidades || [],
+                url: item.enlace || item.url || '#'
+            };
+        }
+
+        function formatMoney(value) {
+            if (typeof value !== 'number') return 'Consultar';
+            const display = currentCurrency === 'USD' ? value * exchangeRate : value;
+            const label = currentCurrency === 'USD' ? 'USD' : 'EUR';
+            return `${label} ${Math.round(display).toLocaleString('es-ES')}`;
+        }
+
+        function sortByPrice(items) {
+            return items.slice().sort((a, b) => {
+                const pa = typeof a.precio === 'number' ? a.precio : Infinity;
+                const pb = typeof b.precio === 'number' ? b.precio : Infinity;
+                return pa - pb;
+            });
+        }
+
+        function renderResults(source) {
+            const resultsEl = document.getElementById('results');
+            const pagEl = document.getElementById('pagination');
+            if (!resultsEl || !pagEl) return;
+
+            const list = state.data[source];
+            if (!list.length) {
+                resultsEl.innerHTML = `<div class="result-meta">No hay alojamientos para ${source.toUpperCase()}.</div>`;
+                pagEl.innerHTML = '';
+                return;
+            }
+
+            const page = state.page[source];
+            const start = (page - 1) * PAGE_SIZE;
+            const pageItems = list.slice(start, start + PAGE_SIZE);
+
+            resultsEl.innerHTML = pageItems.map(item => {
+                const location = [item.barrio, item.distrito].filter(Boolean).join(' - ');
+                const rating = item.rating != null ? item.rating : '-';
+                const camas = item.camas ? `Camas: ${item.camas}` : '';
+                const comodidades = Array.isArray(item.comodidades) && item.comodidades.length
+                    ? `Comodidades: ${item.comodidades.slice(0, 4).join(', ')}`
+                    : '';
+                const hasPrice = typeof item.precio === 'number';
+                const linkText = hasPrice ? 'Ver enlace' : 'Consultar precio';
+                const link = item.url && item.url !== '#' ? `<a class="result-link" href="${item.url}" target="_blank">${linkText}</a>` : '';
+                return `
+                    <div class="result-card">
+                        <div class="result-title">${item.nombre}</div>
+                        <div class="result-meta">${location || '-'}</div>
+                        <div class="result-price">${formatMoney(item.precio)}</div>
+                        <div class="result-meta">Rating: ${rating}</div>
+                        ${camas ? `<div class="result-meta">${camas}</div>` : ''}
+                        ${comodidades ? `<div class="result-meta">${comodidades}</div>` : ''}
+                        ${item.descripcion ? `<div class="result-meta" style="margin-top:0.5rem;">${item.descripcion}</div>` : ''}
+                        ${link}
+                    </div>
+                `;
+            }).join('');
+
+            const totalPages = Math.ceil(list.length / PAGE_SIZE) || 1;
+            let html = '';
+            if (totalPages > 1 && page > 1) {
+                html += `<button class="nav-btn" onclick="changePage('${source}', ${page - 1})">Anterior</button>`;
+            }
+            html += `<span>Pagina ${page} / ${totalPages}</span>`;
+            if (totalPages > 1 && page < totalPages) {
+                html += `<button class="nav-btn" onclick="changePage('${source}', ${page + 1})">Siguiente</button>`;
+            }
+            pagEl.innerHTML = html;
+        }
+
+        async function loadSource(source) {
+            if (state.loading[source]) return;
+            if (state.data[source].length) {
+                renderResults(source);
+                return;
+            }
+            state.loading[source] = true;
+            const resultsEl = document.getElementById('results');
+            if (resultsEl) {
+                resultsEl.innerHTML = `<div class="result-meta">Cargando resultados ${source.toUpperCase()}...</div>`;
+            }
+            try {
+                const json = await fetchJsonWithFallback(sourceFiles[source]);
+                let rawList = [];
+                if (source === 'comet') rawList = json.propiedades_analizadas || [];
+                if (source === 'gpt') rawList = json.opciones || [];
+                if (source === 'manus') rawList = (json.informe && json.informe.alojamientos) || [];
+                state.data[source] = sortByPrice(rawList.map((item, idx) => normalizeAlojamiento(source, item, idx)));
+                state.page[source] = 1;
+                renderResults(source);
+            } catch (err) {
+                if (resultsEl) {
+                    resultsEl.innerHTML = `<div class="result-meta">Error cargando ${source.toUpperCase()}: ${err.message}</div>`;
+                }
+                console.error(err);
+            } finally {
+                state.loading[source] = false;
+            }
+        }
+
+        function switchSource(source) {
+            state.currentSource = source;
+            document.querySelectorAll('.source-toggle .nav-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.source === source);
+            });
+            loadSource(source);
+        }
+
+        function setCurrency(currency) {
+            if (currentCurrency === currency) return;
+            currentCurrency = currency;
+            document.querySelectorAll('.currency-toggle .nav-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.currency === currency);
+            });
+            renderResults(state.currentSource);
+        }
+
+        function changePage(source, page) {
+            state.page[source] = page;
+            renderResults(source);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sortSelect = document.getElementById('price-sort');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', () => {
+                    const src = state.currentSource;
+                    state.data[src] = sortByPrice(state.data[src]);
+                    state.page[src] = 1;
+                    renderResults(src);
+                });
+            }
+            loadSource('gpt');
+        });
+    </script>
+</body>
+</html>

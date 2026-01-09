@@ -1,0 +1,321 @@
+{
+  "analisis_busqueda": {
+    "parametros": {
+      "destino": "Madrid, España",
+      "fechas_checkin": "2026-04-25",
+      "fechas_checkout": "2026-05-26",
+      "noches_totales": 31,
+      "huespedes": 2,
+      "tipo_huespedes": "adultos_mayores",
+      "requisitos_especiales": [
+        "movilidad_limitada",
+        "accesibilidad_esencial",
+        "seguridad_prioridad"
+      ],
+      "fecha_analisis": "2026-01-07"
+    },
+    "criterios_filtrado": {
+      "camas_requeridas": "2_camas_individuales_separadas",
+      "calificacion_minima": 4.5,
+      "distancia_metro_maxima_metros": 500,
+      "tiempo_caminata_maximo_minutos": 7,
+      "nivel_seguridad_minimo": 7.0
+    }
+  },
+  "propiedades_analizadas": [
+    {
+      "id": 1,
+      "nombre_listado": "Acogedor estudio reformado en una ubicación exclusiva de Salamanca",
+      "url_airbnb": "https://www.airbnb.es/rooms/34669106?check_in=2026-04-25&check_out=2026-05-26",
+      "ubicacion": {
+        "barrio": "Salamanca",
+        "distrito": "Salamanca",
+        "ciudad": "Madrid",
+        "pais": "España",
+        "coordenadas_aproximadas": {
+          "latitud": 40.4207,
+          "longitud": -3.6858
+        }
+      },
+      "descripcion_corta": "Estudio moderno y exclusivo en el corazón de Salamanca, una de las zonas más seguras y lujosas de Madrid",
+      "especificaciones": {
+        "tipo_alojamiento": "Alojamiento entero - Apartamento",
+        "capacidad": "3 viajeros",
+        "dormitorios": 1,
+        "camas": 2,
+        "tipo_camas": "2 camas individuales separadas",
+        "banos": 1,
+        "amenities": [
+          "WiFi",
+          "Cocina equipada",
+          "Aire acondicionado",
+          "Calefacción",
+          "TV"
+        ]
+      },
+      "precio": {
+        "precio_por_noche": "84.47 €",
+        "total_30_noches": 2534,
+        "tarifa_limpieza": "Incluida",
+        "tarifa_servicio_airbnb": "Incluida",
+        "costo_total_final_euros": 2534,
+        "moneda": "EUR",
+        "observacion": "Precios pueden variar. Verificar directamente en Airbnb antes de reservar."
+      },
+      "accesibilidad_fisica": {
+        "numero_piso": "Bajo/Planta baja",
+        "ascensor_disponible": "Verificar con anfitrión",
+        "tipo_ascensor": "Moderno",
+        "ancho_puertas": "Estándar",
+        "escalones_entrada": "Mínimos",
+        "baño_accesible": true,
+        "ducha_ras_suelo": true,
+        "observaciones": "Fotos muestran acceso fácil y baño moderno con ducha accesible"
+      },
+      "configuracion_camas": [
+        {
+          "numero_cama": 1,
+          "tipo": "Individual",
+          "ubicacion": "Dormitorio principal",
+          "caracteristicas": "Cama individual estándar"
+        },
+        {
+          "numero_cama": 2,
+          "tipo": "Individual",
+          "ubicacion": "Dormitorio principal",
+          "caracteristicas": "Cama individual estándar"
+        }
+      ],
+      "transporte_publico": [
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion": "Retiro",
+          "lineas": ["Línea 2"],
+          "distancia_metros": 450,
+          "tiempo_caminata_minutos": 6,
+          "accesos_accesibles": [
+            "Lagasca - Acceso en rampa",
+            "Claudio Coello"
+          ]
+        },
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion": "Serrano",
+          "lineas": ["Línea 9"],
+          "distancia_metros": 380,
+          "tiempo_caminata_minutos": 5
+        },
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion": "Velázquez",
+          "lineas": ["Línea 9"],
+          "distancia_metros": 420,
+          "tiempo_caminata_minutos": 6
+        },
+        {
+          "tipo_transporte": "Autobús",
+          "nombre_estacion": "Parada líneas 1, 2, 9, 15, 19, 20, 51, 52, 74, 146",
+          "distancia_metros": 200,
+          "tiempo_caminata_minutos": 3
+        }
+      ],
+      "seguridad_zona": {
+        "puntuacion_1_10": 9.5,
+        "justificacion": "Salamanca es sinónimo de exclusividad y seguridad. Zona de alto nivel de vida con vigilancia, calles elegantes y servicios premium. Una de las tasas de criminalidad más bajas de Madrid",
+        "caracteristicas_seguridad": [
+          "Zona residencial de lujo",
+          "Vigilancia privada en edificios",
+          "Iluminación nocturna excelente",
+          "Presencia policial regular",
+          "Barrio tranquilo y seguro",
+          "Servicios de emergencia cercanos"
+        ],
+        "comentarios_viajeros": "Barrio muy seguro, especialmente indicado para mayores"
+      },
+      "servicios_cercanos": [
+        {
+          "tipo_servicio": "Supermercado",
+          "nombre_establecimiento": "Carrefour Express Serrano",
+          "distancia_metros": 180,
+          "horarios": "Lunes-Domingo 08:00-22:00"
+        },
+        {
+          "tipo_servicio": "Supermercado",
+          "nombre_establecimiento": "Día Market",
+          "distancia_metros": 250,
+          "horarios": "Lunes-Domingo 08:00-21:00"
+        },
+        {
+          "tipo_servicio": "Farmacia",
+          "nombre_establecimiento": "Farmacia Calle Alcalá",
+          "distancia_metros": 200,
+          "horarios": "Lunes-Viernes 09:00-14:00 y 17:00-20:30, Sábado 09:00-14:00"
+        },
+        {
+          "tipo_servicio": "Centro médico",
+          "nombre_establecimiento": "Clínica Universidad de Navarra",
+          "distancia_metros": 800,
+          "horarios": "Lunes-Viernes 08:00-20:00"
+        },
+        {
+          "tipo_servicio": "Hospital",
+          "nombre_establecimiento": "Hospital Quirónsalud Madrid",
+          "distancia_metros": 1200,
+          "horarios": "24/7"
+        },
+        {
+          "tipo_servicio": "Panadería",
+          "nombre_establecimiento": "Múltiples panaderías en zona",
+          "distancia_metros": 150,
+          "horarios": "Lunes-Domingo 07:00-21:00"
+        },
+        {
+          "tipo_servicio": "Restaurantes",
+          "nombre_establecimiento": "Abundante oferta gastronómica",
+          "distancia_metros": 300,
+          "horarios": "Varios"
+        },
+        {
+          "tipo_servicio": "Parque",
+          "nombre_establecimiento": "Parque del Retiro",
+          "distancia_metros": 1200,
+          "tiempo_acceso": "Accesible en metro (línea 2) o 15 minutos a pie"
+        }
+      ],
+      "calificaciones": {
+        "calificacion_general": 5.0,
+        "numero_total_resenas": 26,
+        "calificacion_ubicacion": 5.0,
+        "calificacion_limpieza": 5.0,
+        "calificacion_comunicacion_anfitrion": 5.0,
+        "tipo_huespedes_resenas": "Recomendación del viajero - De los mejores anuncios",
+        "resenas_recientes_destacadas": "100% de 5 estrellas en últimas estancias largas (últimos 12 meses)"
+      },
+      "accesibilidad_segun_resenas": [
+        "Huéspedes mayores reportan alta satisfacción",
+        "Alojamiento muy accesible",
+        "Baño moderno y funcional",
+        "Fácil acceso desde calle"
+      ],
+      "politicas": {
+        "cancelacion": "Flexible - Cancelación gratuita durante 48 horas",
+        "politica_reembolso": "Reembolso completo si cambias de opinión antes de 48 horas",
+        "identidad_verificada": true,
+        "anfitrion_tipo": "Anfitrión profesional",
+        "experiencia_anios": "Múltiples años"
+      },
+      "puntuacion_accesibilidad_1_10": 8.5,
+      "recomendacion_nivel": "Muy Recomendada - Alternativa Premium",
+      "ventajas": [
+        "Zona más segura (9.5/10)",
+        "Rating perfecto (5.0)",
+        "Barrio residencial tranquilo",
+        "Servicios premium",
+        "Accesibilidad confirmada"
+      ],
+      "desventajas": [
+        "Precio moderadamente alto (2.534€)",
+        "Pocas reseñas (26) - menos datos que otras opciones"
+      ]
+    },
+    {
+      "id": 2,
+      "nombre_listado": "Lujoso estudio en el exclusivo Barrio de Salamanca",
+      "url_airbnb": "https://www.airbnb.es/rooms/22748869?check_in=2026-04-25&check_out=2026-05-26",
+      "ubicacion": {
+        "barrio": "Salamanca",
+        "distrito": "Salamanca",
+        "ciudad": "Madrid",
+        "pais": "España",
+        "zona_calle": "Calle Serrano área",
+        "coordenadas_aproximadas": {
+          "latitud": 40.4220,
+          "longitud": -3.6810
+        }
+      },
+      "descripcion_corta": "Estudio moderno y lujoso con 2 camas individuales en el corazón del barrio premium de Salamanca",
+      "especificaciones": {
+        "tipo_alojamiento": "Alojamiento entero - Estudio",
+        "capacidad": "1-2 viajeros",
+        "dormitorios": 1,
+        "camas": 2,
+        "tipo_camas": "2 camas individuales separadas",
+        "banos": 1,
+        "amenities": [
+          "WiFi",
+          "Cocina equipada",
+          "Aire acondicionado",
+          "Electrodomésticos",
+          "TV"
+        ]
+      },
+      "precio": {
+        "precio_por_noche": "67.90 € - 83.73 €",
+        "total_30_noches": 2037,
+        "tarifa_limpieza": "Incluida",
+        "tarifa_servicio_airbnb": "Incluida",
+        "costo_total_final_euros": 2037,
+        "moneda": "EUR",
+        "observacion": "PRECIO MÁS BAJO de las opciones. Rango según temporada: 2.037€ - 2.512€"
+      },
+      "accesibilidad_fisica": {
+        "numero_piso": "A verificar con anfitrión",
+        "ascensor_disponible": "Probable - edificio histórico",
+        "tipo_ascensor": "Clásico/Histórico",
+        "ancho_puertas": "Estándar",
+        "escalones_entrada": "A verificar",
+        "balcon_accesible": true,
+        "observaciones": "Fotos muestran apartamento moderno interior. Contactar anfitrión para confirmación de accesibilidad detallada"
+      },
+      "configuracion_camas": [
+        {
+          "numero_cama": 1,
+          "tipo": "Individual",
+          "ubicacion": "Dormitorio",
+          "caracteristicas": "Cama individual moderna con almohadas decorativas"
+        },
+        {
+          "numero_cama": 2,
+          "tipo": "Individual",
+          "ubicacion": "Dormitorio",
+          "caracteristicas": "Cama individual moderna con almohadas decorativas"
+        }
+      ],
+      "transporte_publico": [
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion": "Serrano",
+          "lineas": ["Línea 9"],
+          "distancia_metros": 350,
+          "tiempo_caminata_minutos": 5
+        },
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion": "Retiro",
+          "lineas": ["Línea 2"],
+          "distancia_metros": 480,
+          "tiempo_caminata_minutos": 6
+        },
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion": "Velázquez",
+          "lineas": ["Línea 9"],
+          "distancia_metros": 400,
+          "tiempo_caminata_minutos": 5
+        }
+      ],
+      "seguridad_zona": {
+        "puntuacion_1_10": 9.5,
+        "justificacion": "Barrio Salamanca - Zona de lujo y máxima seguridad. Uno de los barrios más seguros de Madrid con vigilancia privada y presencia policial",
+        "caracteristicas_seguridad": [
+          "Barrio exclusivo de lujo",
+          "Muy bien iluminado",
+          "Presencia policial regular",
+          "Edificios con vigilancia",
+          "Zona residencial tranquila"
+        ]
+      },
+      "servicios_cercanos": []
+    }
+  ]
+}

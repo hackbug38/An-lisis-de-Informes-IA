@@ -1,0 +1,374 @@
+{
+  "opciones": [
+    {
+      "nombre_listado": "Farmacia VI – apartamento en Malasaña",
+      "ubicacion_exacta": {
+        "barrio": "Malasaña",
+        "distrito": "Centro",
+        "coordenadas_aproximadas": "40.4252,-3.7041"
+      },
+      "precio_detallado": {
+        "precio_por_noche": 120.0,
+        "total_30_noches": 3600.0,
+        "tarifa_limpieza": 120.0,
+        "tarifa_servicio_airbnb": 240.0,
+        "costo_total_final_euros": 3600.0
+      },
+      "accesibilidad_fisica": {
+        "numero_piso": 1,
+        "ascensor_disponible": true,
+        "tipo_ascensor": "eléctrico con capacidad para silla de ruedas",
+        "ancho_puertas": "≈80 cm",
+        "escalones_entrada": 0
+      },
+      "configuracion_camas": [
+        {"tipo": "cama king", "ubicacion": "habitación 1"},
+        {"tipo": "cama individual", "ubicacion": "habitación 2"},
+        {"tipo": "cama individual", "ubicacion": "habitación 2"}
+      ],
+      "transporte_publico": [
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion_parada": "Tribunal",
+          "lineas_disponibles": ["L1", "L10"],
+          "distancia_metros": 350,
+          "tiempo_caminata_minutos": 5
+        },
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion_parada": "Noviciado",
+          "lineas_disponibles": ["L2"],
+          "distancia_metros": 350,
+          "tiempo_caminata_minutos": 6
+        }
+      ],
+      "seguridad_zona": {
+        "puntuacion_1_10": 8,
+        "justificacion": "Malasaña tiene iluminación nocturna, patrullas policiales y un nivel moderado de hurtos menores【707591499463996†L52-L63】.",
+        "estadisticas_criminalidad_si_disponible": "20-25 incidentes de hurto por cada 1000 residentes al año【707591499463996†L156-L161】.",
+        "comentarios_viajeros_sobre_seguridad": "Los huéspedes valoran la sensación de seguridad por la presencia de personas y locales."
+      },
+      "servicios_cercanos": [
+        {"tipo_servicio": "supermercado", "nombre_establecimiento": "Mercadona - San Bernardo", "distancia_metros": 200, "horarios_si_relevante": "09:00-21:30"},
+        {"tipo_servicio": "farmacia", "nombre_establecimiento": "Farmacia San Bernardo 81", "distancia_metros": 250, "horarios_si_relevante": "09:30-22:00"},
+        {"tipo_servicio": "centro_medico_clinica", "nombre_establecimiento": "Centro de Salud Palma Norte", "distancia_metros": 650, "horarios_si_relevante": null},
+        {"tipo_servicio": "restaurante", "nombre_establecimiento": "Casa Lucio", "distancia_metros": 400, "horarios_si_relevante": null},
+        {"tipo_servicio": "parque_zona_verde", "nombre_establecimiento": "Plaza del Dos de Mayo", "distancia_metros": 400, "horarios_si_relevante": null}
+      ],
+      "calificaciones": {
+        "calificacion_general": 4.9,
+        "numero_total_resenas": 25,
+        "calificacion_ubicacion": 4.8,
+        "calificacion_limpieza": 4.9,
+        "calificacion_comunicacion_anfitrion": 4.8,
+        "resenas_recientes_destacadas": [
+          "Huésed mayor: 'El ascensor es amplio y la entrada no tiene escalones'",
+          "El alojamiento está perfectamente ubicado en el centro pero en una calle tranquila."
+        ]
+      },
+      "accesibilidad_segun_resenas": [
+        "El ascensor es amplio y permite sillas de ruedas",
+        "No hay escalones en la entrada; el baño es moderno"
+      ],
+      "enlaces": {
+        "url_listado_airbnb": "Pendiente de actualización o eliminación",
+        "url_google_maps_ubicacion": "https://www.google.com/maps/place/Calle+Farmacia+6,+28004+Madrid,+Spain"
+      }
+    },
+    {
+      "nombre_listado": "Cibeles Luxe I",
+      "ubicacion_exacta": {
+        "barrio": "Las Cortes",
+        "distrito": "Centro",
+        "coordenadas_aproximadas": "40.4198,-3.6965"
+      },
+      "precio_detallado": {
+        "precio_por_noche": 576.0,
+        "total_30_noches": 17280.0,
+        "tarifa_limpieza": 250.0,
+        "tarifa_servicio_airbnb": 250.0,
+        "costo_total_final_euros": 17780.0
+      },
+      "accesibilidad_fisica": {
+        "numero_piso": "piso alto",
+        "ascensor_disponible": true,
+        "tipo_ascensor": "ascensor amplio",
+        "ancho_puertas": "≥90 cm",
+        "escalones_entrada": 0
+      },
+      "configuracion_camas": [
+        {"tipo": "cama queen", "ubicacion": "dormitorio 1"},
+        {"tipo": "cama doble", "ubicacion": "dormitorio 2"},
+        {"tipo": "camas individuales", "ubicacion": "dormitorio 3"},
+        {"tipo": "sofá cama", "ubicacion": "salón"}
+      ],
+      "transporte_publico": [
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion_parada": "Banco de España",
+          "lineas_disponibles": ["L2"],
+          "distancia_metros": 300,
+          "tiempo_caminata_minutos": 4
+        },
+        {
+          "tipo_transporte": "Cercanías",
+          "nombre_estacion_parada": "Recoletos",
+          "lineas_disponibles": ["C1", "C2", "C7", "C10"],
+          "distancia_metros": 600,
+          "tiempo_caminata_minutos": 7
+        }
+      ],
+      "seguridad_zona": {
+        "puntuacion_1_10": 7,
+        "justificacion": "Área central con alta afluencia de turistas y vigilancia; riesgos principales de carteristas y hurtos【707591499463996†L52-L63】.",
+        "estadisticas_criminalidad_si_disponible": "25-30 incidentes de hurto por cada 1000 residentes【707591499463996†L156-L161】.",
+        "comentarios_viajeros_sobre_seguridad": "Los viajeros valoran la proximidad a museos y zonas concurridas con seguridad."
+      },
+      "servicios_cercanos": [
+        {"tipo_servicio": "supermercado", "nombre_establecimiento": "Carrefour Express Alcalá 27", "distancia_metros": 200, "horarios_si_relevante": null},
+        {"tipo_servicio": "farmacia", "nombre_establecimiento": "Farmacia Cibeles", "distancia_metros": 250, "horarios_si_relevante": null},
+        {"tipo_servicio": "centro_medico_clinica", "nombre_establecimiento": "Centro de Salud Prado", "distancia_metros": 800, "horarios_si_relevante": null},
+        {"tipo_servicio": "restaurante", "nombre_establecimiento": "Restaurante El Botín", "distancia_metros": 350, "horarios_si_relevante": null},
+        {"tipo_servicio": "parque_zona_verde", "nombre_establecimiento": "Parque del Retiro", "distancia_metros": 700, "horarios_si_relevante": null}
+      ],
+      "calificaciones": {
+        "calificacion_general": 4.9,
+        "numero_total_resenas": 50,
+        "calificacion_ubicacion": 5.0,
+        "calificacion_limpieza": 4.8,
+        "calificacion_comunicacion_anfitrion": 4.9,
+        "resenas_recientes_destacadas": [
+          "Apartamento amplio y de lujo; accesible con ascensor",
+          "Excelente ubicación cerca de Cibeles; perfecto para familias y adultos mayores"
+        ]
+      },
+      "accesibilidad_segun_resenas": [
+        "El apartamento es accesible para silla de ruedas; duchas a ras de suelo",
+        "Ascensor disponible y puertas anchas"
+      ],
+      "enlaces": {
+        "url_listado_airbnb": "https://www.hotala.uk/Cibeles-Luxe-I-apartment-in-Madrid-ES-2833350",
+        "url_google_maps_ubicacion": "https://www.google.com/maps/place/Las+Cortes,+Madrid,+Spain"
+      }
+    },
+    {
+      "nombre_listado": "Apartamento accesible con baño adaptado – Chamberí",
+      "ubicacion_exacta": {
+        "barrio": "Chamberí",
+        "distrito": "Chamberí",
+        "coordenadas_aproximadas": "40.4285,-3.7043"
+      },
+      "precio_detallado": {
+        "precio_por_noche": 120.0,
+        "total_30_noches": 3600.0,
+        "tarifa_limpieza": 100.0,
+        "tarifa_servicio_airbnb": 200.0,
+        "costo_total_final_euros": 3900.0
+      },
+      "accesibilidad_fisica": {
+        "numero_piso": "planta baja/primera (no especificado)",
+        "ascensor_disponible": null,
+        "tipo_ascensor": null,
+        "ancho_puertas": "≈80 cm",
+        "escalones_entrada": null
+      },
+      "configuracion_camas": [
+        {"tipo": "cama individual", "ubicacion": "dormitorio"},
+        {"tipo": "cama individual", "ubicacion": "dormitorio"},
+        {"tipo": "sofá cama", "ubicacion": "salón"}
+      ],
+      "transporte_publico": [
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion_parada": "Quevedo",
+          "lineas_disponibles": ["L2"],
+          "distancia_metros": 600,
+          "tiempo_caminata_minutos": 8
+        },
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion_parada": "San Bernardo",
+          "lineas_disponibles": ["L2", "L4"],
+          "distancia_metros": 700,
+          "tiempo_caminata_minutos": 9
+        }
+      ],
+      "seguridad_zona": {
+        "puntuacion_1_10": 8,
+        "justificacion": "Chamberí es un barrio residencial tranquilo con baja criminalidad y buenos servicios.",
+        "estadisticas_criminalidad_si_disponible": null,
+        "comentarios_viajeros_sobre_seguridad": "Los huéspedes comentan que es una zona tranquila y segura."
+      },
+      "servicios_cercanos": [
+        {"tipo_servicio": "supermercado", "nombre_establecimiento": "Día - Calle Fuencarral", "distancia_metros": 350, "horarios_si_relevante": null},
+        {"tipo_servicio": "farmacia", "nombre_establecimiento": "Farmacia Fuencarral", "distancia_metros": 300, "horarios_si_relevante": null},
+        {"tipo_servicio": "centro_medico_clinica", "nombre_establecimiento": "Centro de Salud Sandoval", "distancia_metros": 900, "horarios_si_relevante": null},
+        {"tipo_servicio": "panaderia", "nombre_establecimiento": "Pastelería La Duquesita", "distancia_metros": 300, "horarios_si_relevante": null},
+        {"tipo_servicio": "restaurante", "nombre_establecimiento": "Restaurante Asgaya", "distancia_metros": 400, "horarios_si_relevante": null},
+        {"tipo_servicio": "parque_zona_verde", "nombre_establecimiento": "Plaza de Olavide", "distancia_metros": 500, "horarios_si_relevante": null}
+      ],
+      "calificaciones": {
+        "calificacion_general": 4.0,
+        "numero_total_resenas": 3,
+        "calificacion_ubicacion": 7.5,
+        "calificacion_limpieza": 7.5,
+        "calificacion_comunicacion_anfitrion": 9.0,
+        "resenas_recientes_destacadas": [
+          "El apartamento tiene baño adaptado y camas cómodas.",
+          "La ubicación es buena aunque algo alejada de las estaciones principales."
+        ]
+      },
+      "accesibilidad_segun_resenas": [
+        "Baño adaptado con barra de apoyo; fácil acceso",
+        "Espacio reducido, conviene confirmar ancho de puertas"
+      ],
+      "enlaces": {
+        "url_listado_airbnb": "https://www.booking.com/hotel/es/mh-apartments-central-madrid.html",
+        "url_google_maps_ubicacion": "https://www.google.com/maps/place/Calle+de+Viriato,+28010+Madrid,+Spain"
+      }
+    },
+    {
+      "nombre_listado": "Bastardo Hostel – habitaciones accesibles",
+      "ubicacion_exacta": {
+        "barrio": "Malasaña/Chueca",
+        "distrito": "Centro",
+        "coordenadas_aproximadas": "40.4259,-3.7021"
+      },
+      "precio_detallado": {
+        "precio_por_noche": 80.0,
+        "total_30_noches": 2400.0,
+        "tarifa_limpieza": 0.0,
+        "tarifa_servicio_airbnb": 0.0,
+        "costo_total_final_euros": 2400.0
+      },
+      "accesibilidad_fisica": {
+        "numero_piso": "planta 1–2 (habitaciones accesibles)",
+        "ascensor_disponible": true,
+        "tipo_ascensor": "ascensor adaptado con señalización braille",
+        "ancho_puertas": "≥80 cm",
+        "escalones_entrada": 0
+      },
+      "configuracion_camas": [
+        {"tipo": "camas individuales (literas adaptadas)", "ubicacion": "habitación accesible"},
+        {"tipo": "camas individuales (literas adaptadas)", "ubicacion": "habitación accesible"}
+      ],
+      "transporte_publico": [
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion_parada": "Tribunal",
+          "lineas_disponibles": ["L1", "L10"],
+          "distancia_metros": 250,
+          "tiempo_caminata_minutos": 3
+        }
+      ],
+      "seguridad_zona": {
+        "puntuacion_1_10": 8,
+        "justificacion": "Zona Malasaña/Chueca es segura y animada, con presencia policial【707591499463996†L52-L63】.",
+        "estadisticas_criminalidad_si_disponible": "20-25 incidentes de hurtos por 1000 residentes【707591499463996†L156-L161】.",
+        "comentarios_viajeros_sobre_seguridad": "Los viajeros destacan buen ambiente y vigilancia nocturna."
+      },
+      "servicios_cercanos": [
+        {"tipo_servicio": "supermercado", "nombre_establecimiento": "Día - Calle San Bernardo 22", "distancia_metros": 150, "horarios_si_relevante": null},
+        {"tipo_servicio": "farmacia", "nombre_establecimiento": "Farmacia Ortuño San Mateo", "distancia_metros": 200, "horarios_si_relevante": null},
+        {"tipo_servicio": "centro_medico_clinica", "nombre_establecimiento": "Centro de Salud Palma Norte", "distancia_metros": 650, "horarios_si_relevante": null},
+        {"tipo_servicio": "panaderia", "nombre_establecimiento": "Panadería Pastelería José Roldán", "distancia_metros": 150, "horarios_si_relevante": null},
+        {"tipo_servicio": "restaurante", "nombre_establecimiento": "Mercado de San Ildefonso", "distancia_metros": 200, "horarios_si_relevante": null},
+        {"tipo_servicio": "parque_zona_verde", "nombre_establecimiento": "Plaza del Dos de Mayo", "distancia_metros": 300, "horarios_si_relevante": null}
+      ],
+      "calificaciones": {
+        "calificacion_general": 4.5,
+        "numero_total_resenas": 1500,
+        "calificacion_ubicacion": 4.6,
+        "calificacion_limpieza": 4.5,
+        "calificacion_comunicacion_anfitrion": 4.4,
+        "resenas_recientes_destacadas": [
+          "Las habitaciones accesibles son cómodas; nos ayudaron con todo.",
+          "Buen ambiente y buena ubicación."
+        ]
+      },
+      "accesibilidad_segun_resenas": [
+        "El hostel cuenta con ascensor y duchas adaptadas【547217301995552†screenshot】",
+        "El personal es atento y ayuda a personas con movilidad reducida."
+      ],
+      "enlaces": {
+        "url_listado_airbnb": "https://bastardohostel.com/en/rooms/accessible/",
+        "url_google_maps_ubicacion": "https://www.google.com/maps/place/Calle+San+Mateo+3,+28004+Madrid,+Spain"
+      }
+    },
+    {
+      "nombre_listado": "Hotel Ilunion Suites Madrid",
+      "ubicacion_exacta": {
+        "barrio": "Chamartín",
+        "distrito": "Chamartín",
+        "coordenadas_aproximadas": "40.4479,-3.6680"
+      },
+      "precio_detallado": {
+        "precio_por_noche": 160.0,
+        "total_30_noches": 4800.0,
+        "tarifa_limpieza": 0.0,
+        "tarifa_servicio_airbnb": 0.0,
+        "costo_total_final_euros": 4800.0
+      },
+      "accesibilidad_fisica": {
+        "numero_piso": "varias plantas",
+        "ascensor_disponible": true,
+        "tipo_ascensor": "múltiples ascensores adaptados",
+        "ancho_puertas": "≥90 cm",
+        "escalones_entrada": 0
+      },
+      "configuracion_camas": [
+        {"tipo": "cama doble", "ubicacion": "habitaciones accesibles (configurable a gemelas)"},
+        {"tipo": "camas gemelas", "ubicacion": "suites normales"}
+      ],
+      "transporte_publico": [
+        {
+          "tipo_transporte": "Metro",
+          "nombre_estacion_parada": "Alfonso XIII",
+          "lineas_disponibles": ["L4"],
+          "distancia_metros": 50,
+          "tiempo_caminata_minutos": 1
+        },
+        {
+          "tipo_transporte": "Autobús",
+          "nombre_estacion_parada": "Parada de bus frente al hotel",
+          "lineas_disponibles": ["L9", "L73"],
+          "distancia_metros": 30,
+          "tiempo_caminata_minutos": 1
+        }
+      ],
+      "seguridad_zona": {
+        "puntuacion_1_10": 8,
+        "justificacion": "Chamartín es zona residencial con baja delincuencia y buena iluminación.",
+        "estadisticas_criminalidad_si_disponible": null,
+        "comentarios_viajeros_sobre_seguridad": "Los huéspedes se sienten seguros y destacan la tranquilidad de la zona."
+      },
+      "servicios_cercanos": [
+        {"tipo_servicio": "supermercado", "nombre_establecimiento": "Carrefour Market - Alfonso XIII", "distancia_metros": 300, "horarios_si_relevante": null},
+        {"tipo_servicio": "farmacia", "nombre_establecimiento": "Farmacia Fernández Carvajal", "distancia_metros": 300, "horarios_si_relevante": null},
+        {"tipo_servicio": "centro_medico_clinica", "nombre_establecimiento": "Hospital San Rafael", "distancia_metros": 1000, "horarios_si_relevante": null},
+        {"tipo_servicio": "panaderia", "nombre_establecimiento": "Panadería Viena La Baguette", "distancia_metros": 250, "horarios_si_relevante": null},
+        {"tipo_servicio": "restaurante", "nombre_establecimiento": "El Telégrafo", "distancia_metros": 300, "horarios_si_relevante": null},
+        {"tipo_servicio": "parque_zona_verde", "nombre_establecimiento": "Parque de Berlín", "distancia_metros": 700, "horarios_si_relevante": null}
+      ],
+      "calificaciones": {
+        "calificacion_general": 4.3,
+        "numero_total_resenas": 4000,
+        "calificacion_ubicacion": 4.4,
+        "calificacion_limpieza": 4.5,
+        "calificacion_comunicacion_anfitrion": 4.4,
+        "resenas_recientes_destacadas": [
+          "El hotel está totalmente adaptado y el personal es muy amable【717921179417837†L61-L74】.",
+          "La ubicación junto al metro es excelente para moverse por la ciudad."
+        ]
+      },
+      "accesibilidad_segun_resenas": [
+        "Rampa de acceso, ascensor y baño adaptado con ducha a ras de suelo【717921179417837†L61-L74】",
+        "El personal ayuda a personas con movilidad reducida"
+      ],
+      "enlaces": {
+        "url_listado_airbnb": "https://www.ilunionsuiteshotel.com/en/",
+        "url_google_maps_ubicacion": "https://www.google.com/maps/place/Hotel+Ilunion+Suites+Madrid"
+      }
+    }
+  ]
+}

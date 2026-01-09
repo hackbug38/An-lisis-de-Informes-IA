@@ -1,0 +1,109 @@
+{
+  "informe": {
+    "titulo": "Análisis de Alojamientos Accesibles en Madrid",
+    "periodo": "25 de abril - 26 de mayo de 2026",
+    "requisitos_clave": [
+      "2 camas individuales",
+      "Accesibilidad para movilidad reducida"
+    ],
+    "alojamientos": [
+      {
+        "id": 1,
+        "nombre": "Pacífico Deluxe Twins Suite near Retiro",
+        "ubicación": "Retiro, Madrid",
+        "enlace": "https://www.airbnb.com/rooms/1434733313027961527",
+        "camas": "2 individuales",
+        "accesibilidad": "No detallada explícitamente, diseño moderno (renovado en 2024).",
+        "puntuación": 4.81,
+        "reseñas_count": 37,
+        "comodidades": ["Cocina", "Wifi", "Espacio de trabajo", "Aire acondicionado"]
+      },
+      {
+        "id": 2,
+        "nombre": "Nuevo apartamento, accesible y con parking",
+        "ubicación": "Salamanca, Madrid",
+        "enlace": "https://www.airbnb.com/rooms/48291935",
+        "camas": "2 individuales + 1 doble",
+        "accesibilidad": "Alta (Ducha sin escalones, baño completo adaptado, ascensor).",
+        "puntuación": 4.88,
+        "reseñas_count": 24,
+        "comodidades": ["Parking gratuito", "Piscina (estacional)", "Wifi", "Cocina"]
+      },
+      {
+        "id": 3,
+        "nombre": "Accessible flat near the Toledo Bridge",
+        "ubicación": "Arganzuela, Madrid",
+        "enlace": "https://www.airbnb.com/rooms/1522453368558510374",
+        "camas": "4 camas (incluye individuales)",
+        "accesibilidad": "Confirmada en el título, requiere verificación de detalles específicos.",
+        "puntuación": 4.88,
+        "reseñas_count": 8,
+        "comodidades": ["Cerca de transporte público", "Wifi", "Cocina"]
+      },
+      {
+        "id": 4,
+        "nombre": "Via Monte | Accessible Apartment",
+        "ubicación": "Tetuán / Chamartín, Madrid",
+        "enlace": "https://www.airbnb.com/rooms/1420889591151526424",
+        "camas": "2 individuales",
+        "accesibilidad": "Específicamente adaptado, ascensor, espacios amplios.",
+        "puntuación": 5.0,
+        "reseñas_count": 4,
+        "comodidades": ["Wifi", "Cocina", "Ascensor", "Aire acondicionado"]
+      },
+      {
+        "id": 5,
+        "nombre": "Mercedes (Apartamentos Adaptados)",
+        "ubicación": "Barajas, Madrid",
+        "enlace": "https://www.accessiblemadrid.com/en/mercedes",
+        "camas": "2 individuales",
+        "accesibilidad": "Totalmente adaptado (Roll-in shower, edificio accesible).",
+        "puntuación": null,
+        "reseñas_count": null,
+        "comodidades": ["Transporte al aeropuerto", "Recepción 24h", "Wifi", "Cocina"]
+      },
+      {
+        "id": 6,
+        "nombre": "Be Mate Trafalgar",
+        "ubicación": "Chamberí, Madrid",
+        "enlace": "https://www.booking.com/hotel/es/be-mate-trafalgar.html",
+        "camas": "Configurables (individuales bajo petición)",
+        "accesibilidad": "Instalaciones para personas con movilidad reducida, ascensor.",
+        "puntuación": 9.1,
+        "reseñas_count": 710,
+        "comodidades": ["Gimnasio", "Lavandería", "Conserjería", "Wifi"]
+      },
+      {
+        "id": 7,
+        "nombre": "Claraval (Apartamento Adaptado)",
+        "ubicación": "Malasaña, Madrid",
+        "enlace": "https://www.accessiblemadrid.com/en/claraval",
+        "camas": "2 dormitorios (camas dobles/individuales)",
+        "accesibilidad": "Totalmente adaptado, rampa portátil disponible, ascensor amplio.",
+        "puntuación": null,
+        "reseñas_count": null,
+        "comodidades": ["Kit de desayuno gratuito", "Limpieza diaria opcional", "Wifi"]
+      },
+      {
+        "id": 8,
+        "nombre": "Quevedo III (Chamberí)",
+        "ubicación": "Chamberí, Madrid",
+        "enlace": "https://execstays.com/property/accessible-2-single-bed-apartment-in-chamber%C3%AD-adapted-bathroom-quevedo-iii/BC-11395992",
+        "camas": "2 individuales",
+        "accesibilidad": "Baño adaptado, acceso sin barreras.",
+        "puntuación": 8.0,
+        "reseñas_count": 3,
+        "comodidades": ["Wifi", "Cocina", "Cerca de Metro Quevedo"]
+      }
+    ],
+    "analisis_seguridad": {
+      "distritos_recomendados": ["Salamanca", "Chamberí", "Retiro"],
+      "observaciones": "Salamanca y Chamberí son los distritos más seguros y con mejor infraestructura para estancias largas."
+    },
+    "recomendaciones_finales": [
+      "Priorizar Opción 2 (Salamanca) por equilibrio seguridad/accesibilidad.",
+      "Considerar Opciones 5 y 7 para necesidades técnicas de accesibilidad garantizadas.",
+      "Verificar disponibilidad inmediata debido a la alta demanda en primavera."
+    ]
+  }
+}

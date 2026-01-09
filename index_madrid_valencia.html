@@ -226,6 +226,24 @@
             display: none;
         }
 
+        /* TEMP: ocultar elementos fijos tipo 'pill' en la parte inferior (inserciones de extensiones) */
+        *[style*="position:fixed"][style*="bottom"] {
+            display: none !important;
+            pointer-events: none !important;
+        }
+
+        /* Ensure our comet detail modal is hidden by default; JS will show it by adding the 'show' class */
+        #comet-detail-modal {
+            display: none !important;
+            pointer-events: none !important;
+        }
+        #comet-detail-modal.show {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto !important;
+        }
+
         .currency-toggle {
             display: flex;
             justify-content: center;
@@ -656,6 +674,7 @@
         let overviewChartInstance = null;
         let breakdownChartInstance = null;
         let currentSourceKey = 'gpt'; // Default
+        let currentAlojamientoSource = 'gpt';
         let currentCurrency = 'EUR';
         const exchangeRate = 1.05; // 1 EUR = 1.05 USD
 
@@ -1109,6 +1128,44 @@
             initCharts();
         });
 
+    </script>
+    <script>
+    // Runtime helper: detect and hide third-party fixed bottom 'pill' elements that obscure the UI.
+    (function(){
+        function hideSmallFixedPills() {
+            try {
+                const exceptions = new Set(['comet-detail-modal']);
+                const all = Array.from(document.body.querySelectorAll('*'));
+                const hidden = [];
+                all.forEach(n => {
+                    const cs = window.getComputedStyle(n);
+                    if (!cs) return;
+                    const pos = cs.position;
+                    if ((pos === 'fixed' || pos === 'sticky') && cs.display !== 'none' && cs.visibility !== 'hidden') {
+                        const rect = n.getBoundingClientRect();
+                        // target small bars near the bottom of the viewport
+                        if (rect.height > 0 && rect.height <= 140 && rect.width > 120 && (rect.bottom >= (window.innerHeight - 10) || rect.top >= (window.innerHeight - 200))) {
+                            if (n.id && exceptions.has(n.id)) return;
+                            // avoid hiding major app modals by checking for large centered elements
+                            if (Math.abs(rect.left - (window.innerWidth-rect.width)/2) < 40 && rect.width > window.innerWidth*0.6 && rect.height > 200) return;
+                            n.style.display = 'none';
+                            hidden.push(n);
+                        }
+                    }
+                });
+                if (hidden.length) console.info('Hidden fixed bottom pills:', hidden);
+            } catch(e){ console.error('hideSmallFixedPills error', e); }
+        }
+        window.addEventListener('load', hideSmallFixedPills);
+        // also observe mutations to catch dynamically-inserted pills
+        const mo = new MutationObserver((mutations)=>{ hideSmallFixedPills();
+            // additionally ensure our modal stays hidden by forcing an important display:none
+            const mm = document.getElementById('comet-detail-modal'); if (mm) mm.style.setProperty('display','none','important');
+        });
+        mo.observe(document.body, { childList: true, subtree: true });
+        // Force-hide modal initially (use !important to override inline styles set in HTML)
+        window.addEventListener('DOMContentLoaded', () => { const mm = document.getElementById('comet-detail-modal'); if (mm) mm.style.setProperty('display','none','important'); });
+    })();
     </script>
 </body>
 

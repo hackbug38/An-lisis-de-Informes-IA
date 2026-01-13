@@ -4,7 +4,7 @@ Este proyecto es un dashboard interactivo diseñado para visualizar y comparar p
 
 ## 🚀 Ver Online
 
-**[Madrid vs Sevilla](https://hackbug38.github.io/An-lisis-de-Informes-IA/)** | **[Madrid vs Valencia](https://hackbug38.github.io/An-lisis-de-Informes-IA/index_madrid_valencia.html)** | **[Alojamiento Detallado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_detallado.html)**
+**[Madrid vs Sevilla](https://hackbug38.github.io/An-lisis-de-Informes-IA/)** | **[Madrid vs Valencia](https://hackbug38.github.io/An-lisis-de-Informes-IA/index_madrid_valencia.html)** | **[Alojamiento Detallado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_detallado.html)** | **[Alojamiento Seleccionado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_seleccionado.html)**
 
 ## 🎯 Comparativas Disponibles
 
@@ -76,6 +76,8 @@ El proyecto incluye un proceso riguroso de validación de datos:
 .
 ├── index.html                          # Madrid vs Sevilla
 ├── index_madrid_valencia.html          # Madrid vs Valencia
+├── alojamiento_detallado.html          # Alojamiento Detallado (Multi-fuente)
+├── alojamiento_seleccionado.html       # Alojamiento Seleccionado (Panel Personalizado)
 ├── README.md                           # Este archivo
 ├── Comparación viaje Madrid Sevilla GPT II.txt
 ├── Comparación viaje Madrid Sevilla Gemini.txt
@@ -137,6 +139,13 @@ El dashboard utiliza un diseño moderno con:
 - Se implementó un selector de moneda con conversión automática (EUR/USD).
 - Se mejoró la visualización de resultados con paginación y orden por precio.
 
+### Implementación de Panel de Selección Personalizada (`alojamiento_seleccionado.html`)
+
+- Se creó un nuevo tablero para la selección manual y comparación de alojamientos específicos.
+- Se añadieron **12 alojamientos seleccionados** con detalles de accesibilidad y precios unificados.
+- Se implementó una **función de ordenación dinámica por precio** (menor a mayor).
+- Se integró soporte multi-moneda (EUR/USD) sincronizado con el renderizado dinámico.
+
 ## 🚀 Uso Local
 
 Para ejecutar el proyecto localmente:
@@ -163,6 +172,7 @@ Accede a:
 - Madrid vs Sevilla: `http://localhost:8000/index.html`
 - Madrid vs Valencia: `http://localhost:8000/index_madrid_valencia.html`
 - Alojamiento Detallado: `http://localhost:8000/alojamiento_detallado.html`
+- Alojamiento Seleccionado: `http://localhost:8000/alojamiento_seleccionado.html`
 
 ## 🤝 Contribuciones
 

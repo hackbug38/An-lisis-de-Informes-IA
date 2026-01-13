@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -122,7 +123,7 @@
         }
 
         .sort-row select {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             color: var(--text-primary);
             border: var(--glass-border);
             padding: 0.4rem 0.6rem;
@@ -139,8 +140,8 @@
         }
 
         .result-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 12px;
             padding: 1rem;
         }
@@ -188,6 +189,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -204,6 +206,7 @@
                 <button class="nav-btn active" data-source="gpt" onclick="switchSource('gpt')">GPT</button>
                 <button class="nav-btn" data-source="comet" onclick="switchSource('comet')">Comet</button>
                 <button class="nav-btn" data-source="manus" onclick="switchSource('manus')">Manus</button>
+                <button class="nav-btn" data-source="nuevas" onclick="switchSource('nuevas')">Nuevas</button>
             </div>
 
             <div class="sort-row">
@@ -225,17 +228,20 @@
             data: {
                 gpt: [],
                 comet: [],
-                manus: []
+                manus: [],
+                nuevas: []
             },
             page: {
                 gpt: 1,
                 comet: 1,
-                manus: 1
+                manus: 1,
+                nuevas: 1
             },
             loading: {
                 gpt: false,
                 comet: false,
-                manus: false
+                manus: false,
+                nuevas: false
             }
         };
 
@@ -245,7 +251,8 @@
         const sourceFiles = {
             gpt: 'Alojamiento/resultados GPT.json',
             comet: 'Alojamiento/Alojamientos Comet.json',
-            manus: 'Alojamiento/alojamientos_madrid Manus.json'
+            manus: 'Alojamiento/alojamientos_madrid Manus.json',
+            nuevas: 'Alojamiento/nuevas_opciones.json'
         };
 
         function getFirstDefined(obj, keys) {
@@ -300,7 +307,24 @@
                     rating: item.calificaciones && item.calificaciones.calificacion_general,
                     camas: item.especificaciones && item.especificaciones.camas,
                     comodidades: (item.especificaciones && item.especificaciones.amenities) || [],
-                    url: item.url_airbnb || '#'
+                    url: item.url_airbnb || '#',
+                    plataforma: 'Airbnb'
+                };
+            }
+
+            if (source === 'nuevas') {
+                return {
+                    id: `nuevas_${idx}`,
+                    nombre: item.nombre || `Listado ${idx + 1}`,
+                    barrio: item.barrio || '',
+                    distrito: '',
+                    descripcion: '',
+                    precio: item.precio_total_eur || null,
+                    rating: item.rating || null,
+                    camas: item.camas || null,
+                    comodidades: item.comodidades || [],
+                    url: item.url || '#',
+                    plataforma: item.plataforma || 'Airbnb'
                 };
             }
 
@@ -316,12 +340,22 @@
                     rating: item.calificaciones && item.calificaciones.calificacion_general,
                     camas: Array.isArray(item.configuracion_camas) ? item.configuracion_camas.length : null,
                     comodidades: (item.especificaciones && item.especificaciones.amenities) || [],
-                    url: (item.enlaces && (item.enlaces.url_listado_airbnb || item.enlaces.url)) || '#'
+                    url: (item.enlaces && (item.enlaces.url_listado_airbnb || item.enlaces.url)) || '#',
+                    plataforma: item.plataforma || 'Airbnb'
                 };
             }
 
             const rawUbic = getFirstDefined(item, ['ubicaci\u00f3n', 'ubicacion', 'ubicaci\u00a2n']) || '';
             const barrio = rawUbic.split(',')[0].trim() || rawUbic;
+            const link = item.enlace || item.url || '#';
+            let plataforma = item.plataforma;
+            if (!plataforma) {
+                plataforma = 'Airbnb';
+                if (link.includes('booking.com')) plataforma = 'Booking';
+                else if (link.includes('accessiblemadrid.com')) plataforma = 'AccessibleMadrid';
+                else if (link.includes('execstays.com')) plataforma = 'ExecStays';
+            }
+
             return {
                 id: item.id != null ? String(item.id) : `manus_${idx}`,
                 nombre: item.nombre || `Listado ${idx + 1}`,
@@ -332,7 +366,8 @@
                 rating: getFirstDefined(item, ['puntuaci\u00f3n', 'puntuacion', 'puntuaci\u00a2n']),
                 camas: item.camas || null,
                 comodidades: item.comodidades || [],
-                url: item.enlace || item.url || '#'
+                url: link,
+                plataforma: plataforma
             };
         }
 
@@ -375,8 +410,8 @@
                     ? `Comodidades: ${item.comodidades.slice(0, 4).join(', ')}`
                     : '';
                 const hasPrice = typeof item.precio === 'number';
-                const linkText = hasPrice ? 'Ver enlace' : 'Consultar precio';
-                const link = item.url && item.url !== '#' ? `<a class="result-link" href="${item.url}" target="_blank">${linkText}</a>` : '';
+                const linkText = hasPrice ? `Ver en ${item.plataforma || 'Airbnb'}` : 'Consultar precio';
+                const link = item.url && item.url !== '#' ? `<a class="result-link" href="${item.url}" target="_blank">${linkText}</a>` : '<span class="result-meta" style="display:block;margin-top:0.6rem;">Sin enlace disponible</span>';
                 return `
                     <div class="result-card">
                         <div class="result-title">${item.nombre}</div>
@@ -420,6 +455,7 @@
                 if (source === 'comet') rawList = json.propiedades_analizadas || [];
                 if (source === 'gpt') rawList = json.opciones || [];
                 if (source === 'manus') rawList = (json.informe && json.informe.alojamientos) || [];
+                if (source === 'nuevas') rawList = json.nuevas_opciones || [];
                 state.data[source] = sortByPrice(rawList.map((item, idx) => normalizeAlojamiento(source, item, idx)));
                 state.page[source] = 1;
                 renderResults(source);
@@ -469,4 +505,5 @@
         });
     </script>
 </body>
+
 </html>

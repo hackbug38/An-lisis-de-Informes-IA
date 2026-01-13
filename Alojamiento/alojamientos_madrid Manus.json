@@ -16,7 +16,13 @@
         "accesibilidad": "No detallada explícitamente, diseño moderno (renovado en 2024).",
         "puntuación": 4.81,
         "reseñas_count": 37,
-        "comodidades": ["Cocina", "Wifi", "Espacio de trabajo", "Aire acondicionado"]
+        "comodidades": [
+          "Cocina",
+          "Wifi",
+          "Espacio de trabajo",
+          "Aire acondicionado"
+        ],
+        "plataforma": "Airbnb"
       },
       {
         "id": 2,
@@ -27,7 +33,13 @@
         "accesibilidad": "Alta (Ducha sin escalones, baño completo adaptado, ascensor).",
         "puntuación": 4.88,
         "reseñas_count": 24,
-        "comodidades": ["Parking gratuito", "Piscina (estacional)", "Wifi", "Cocina"]
+        "comodidades": [
+          "Parking gratuito",
+          "Piscina (estacional)",
+          "Wifi",
+          "Cocina"
+        ],
+        "plataforma": "Airbnb"
       },
       {
         "id": 3,
@@ -38,7 +50,12 @@
         "accesibilidad": "Confirmada en el título, requiere verificación de detalles específicos.",
         "puntuación": 4.88,
         "reseñas_count": 8,
-        "comodidades": ["Cerca de transporte público", "Wifi", "Cocina"]
+        "comodidades": [
+          "Cerca de transporte público",
+          "Wifi",
+          "Cocina"
+        ],
+        "plataforma": "Airbnb"
       },
       {
         "id": 4,
@@ -49,7 +66,13 @@
         "accesibilidad": "Específicamente adaptado, ascensor, espacios amplios.",
         "puntuación": 5.0,
         "reseñas_count": 4,
-        "comodidades": ["Wifi", "Cocina", "Ascensor", "Aire acondicionado"]
+        "comodidades": [
+          "Wifi",
+          "Cocina",
+          "Ascensor",
+          "Aire acondicionado"
+        ],
+        "plataforma": "Airbnb"
       },
       {
         "id": 5,
@@ -60,7 +83,13 @@
         "accesibilidad": "Totalmente adaptado (Roll-in shower, edificio accesible).",
         "puntuación": null,
         "reseñas_count": null,
-        "comodidades": ["Transporte al aeropuerto", "Recepción 24h", "Wifi", "Cocina"]
+        "comodidades": [
+          "Transporte al aeropuerto",
+          "Recepción 24h",
+          "Wifi",
+          "Cocina"
+        ],
+        "plataforma": "AccessibleMadrid"
       },
       {
         "id": 6,
@@ -71,7 +100,13 @@
         "accesibilidad": "Instalaciones para personas con movilidad reducida, ascensor.",
         "puntuación": 9.1,
         "reseñas_count": 710,
-        "comodidades": ["Gimnasio", "Lavandería", "Conserjería", "Wifi"]
+        "comodidades": [
+          "Gimnasio",
+          "Lavandería",
+          "Conserjería",
+          "Wifi"
+        ],
+        "plataforma": "Booking"
       },
       {
         "id": 7,
@@ -82,7 +117,12 @@
         "accesibilidad": "Totalmente adaptado, rampa portátil disponible, ascensor amplio.",
         "puntuación": null,
         "reseñas_count": null,
-        "comodidades": ["Kit de desayuno gratuito", "Limpieza diaria opcional", "Wifi"]
+        "comodidades": [
+          "Kit de desayuno gratuito",
+          "Limpieza diaria opcional",
+          "Wifi"
+        ],
+        "plataforma": "AccessibleMadrid"
       },
       {
         "id": 8,
@@ -93,11 +133,20 @@
         "accesibilidad": "Baño adaptado, acceso sin barreras.",
         "puntuación": 8.0,
         "reseñas_count": 3,
-        "comodidades": ["Wifi", "Cocina", "Cerca de Metro Quevedo"]
+        "comodidades": [
+          "Wifi",
+          "Cocina",
+          "Cerca de Metro Quevedo"
+        ],
+        "plataforma": "ExecStays"
       }
     ],
     "analisis_seguridad": {
-      "distritos_recomendados": ["Salamanca", "Chamberí", "Retiro"],
+      "distritos_recomendados": [
+        "Salamanca",
+        "Chamberí",
+        "Retiro"
+      ],
       "observaciones": "Salamanca y Chamberí son los distritos más seguros y con mejor infraestructura para estancias largas."
     },
     "recomendaciones_finales": [

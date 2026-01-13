@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alojamiento Seleccionado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-primary: #3b82f6;
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .currency-toggle {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: var(--glass-border);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.4rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .result-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .result-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #10b981;
+            margin: 0.75rem 0;
+        }
+
+        .result-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .result-link:hover {
+            opacity: 0.8;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Mi Selección de Alojamiento</h1>
+            <p class="subtitle">Aquí aparecerán los alojamientos que vayamos analizando y seleccionando juntos.</p>
+        </header>
+
+        <div class="card">
+            <div class="currency-toggle">
+                <button class="nav-btn active" data-currency="EUR" onclick="setCurrency('EUR')">EUR</button>
+                <button class="nav-btn" data-currency="USD" onclick="setCurrency('USD')">USD</button>
+            </div>
+
+            <div id="results" class="results-grid">
+                <div class="empty-state">
+                    <p>Todavía no has añadido ningún alojamiento.</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Pásame los enlaces para empezar a poblar esta
+                        lista.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const state = {
+            alojamientos: [
+                {
+                    nombre: "Estudio interior en el centro de Madrid",
+                    barrio: "Embajadores",
+                    distrito: "Centro",
+                    precio: 1650,
+                    rating: 4.86,
+                    camas: 1,
+                    url: "https://www.airbnb.com.co/rooms/1405981352252551548",
+                    plataforma: "Airbnb"
+                },
+                {
+                    nombre: "Joya de tranquilidad, patio verde",
+                    barrio: "Lavapiés",
+                    distrito: "Centro",
+                    precio: 1880, // Conversión aproximada de 8.07M COP a EUR
+                    rating: 4.92,
+                    camas: 2,
+                    url: "https://www.airbnb.com.co/rooms/1082942",
+                    plataforma: "Airbnb",
+                    nota: "IMPORTANTE: Anfitrión indica que NO es apto para personas con discapacidad y no tiene ascensor."
+                },
+                {
+                    nombre: "Acogedor estudio en Chamberí",
+                    barrio: "Chamberí",
+                    distrito: "Chamberí",
+                    precio: 1653, // Conversión aproximada de 7.1M COP a EUR
+                    rating: 4.67,
+                    camas: 2,
+                    url: "https://www.airbnb.com.co/rooms/1314342292811397554",
+                    plataforma: "Airbnb",
+                    nota: "ACCESIBLE: A pie de calle, sin escalones y con plato de ducha."
+                },
+                {
+                    nombre: "Apartamento con parking gratis",
+                    barrio: "Fuencarral",
+                    distrito: "Fuencarral-El Pardo",
+                    precio: 1823, // Conversión aproximada de 7.84M COP a EUR
+                    rating: 4.85,
+                    camas: 3,
+                    url: "https://www.airbnb.com.co/rooms/36393316",
+                    plataforma: "Airbnb",
+                    nota: "ACCESIBLE: Un solo piso, sin escaleras y parking en la puerta."
+                },
+                {
+                    nombre: "En Sol, diseño y comodidad",
+                    barrio: "Sol",
+                    distrito: "Centro",
+                    precio: 1550, // Conversión aproximada de 6.65M COP a EUR
+                    rating: 4.64,
+                    camas: 3,
+                    url: "https://www.airbnb.com.co/rooms/778194844814022880",
+                    plataforma: "Airbnb",
+                    nota: "IMPORTANTE: Edificio con ascensor grande (81cm ancho), pero dormitorio en altillo con ESCALERAS."
+                },
+                {
+                    nombre: "Carabanchel con garaje y jardín",
+                    barrio: "Carabanchel",
+                    distrito: "Carabanchel",
+                    precio: 1375, // Conversión aproximada de 5.91M COP a EUR
+                    rating: 4.94,
+                    camas: 1, // Sofá cama
+                    url: "https://www.airbnb.com.co/rooms/915565520507185000",
+                    plataforma: "Airbnb",
+                    nota: "ACCESIBLE: Edificio con ascensor y GARAJE privado. Nota: Es un sofá cama."
+                },
+                {
+                    nombre: "Moderno piso en Ventilla",
+                    barrio: "Ventilla",
+                    distrito: "Tetuán",
+                    precio: 1485, // Conversión aproximada de 6.38M COP a EUR
+                    rating: null,
+                    camas: 1,
+                    url: "https://www.airbnb.com.co/rooms/1163523436338833070",
+                    plataforma: "Airbnb",
+                    nota: "NUEVO: Sin reseñas todavía. No se detallan especificaciones de accesibilidad."
+                },
+                {
+                    nombre: "Estudio moderno en Delicias",
+                    barrio: "Delicias",
+                    distrito: "Arganzuela",
+                    precio: 1790, // Conversión aprox de 7.7M COP
+                    rating: 5.0,
+                    camas: 1,
+                    url: "https://www.airbnb.com.co/rooms/1498598134006563297",
+                    plataforma: "Airbnb",
+                    nota: "ESTUDIO INDEPENDIENTE. Moderno, entrada autónoma. No menciona ascensor."
+                },
+                {
+                    nombre: "Urban Barajas 2",
+                    barrio: "Barajas",
+                    distrito: "Barajas",
+                    precio: 1267, // Conversión aprox de 5.45M COP
+                    rating: 4.88,
+                    camas: 1,
+                    url: "https://www.airbnb.com.co/rooms/701199666886728026",
+                    plataforma: "Airbnb",
+                    nota: "IMPORTANTE: Habitación compartida en chalet abuhardillado. Probablemente escaleras."
+                },
+                {
+                    nombre: "Habitación Luminosa",
+                    barrio: "Centro",
+                    distrito: "Madrid",
+                    precio: 1428, // Conversión aprox de 6.14M COP
+                    rating: 5.0,
+                    camas: 1,
+                    url: "https://www.airbnb.com.co/rooms/1359387734360454775",
+                    plataforma: "Airbnb",
+                    nota: "Habitación privada en piso compartido. Zona céntrica."
+                },
+                {
+                    nombre: "Estudio 102",
+                    barrio: "Barrio Popular",
+                    distrito: "Madrid",
+                    precio: 1317, // Conversión aprox de 5.66M COP
+                    rating: 4.58,
+                    camas: 2,
+                    url: "https://www.airbnb.com.co/rooms/13158018",
+                    plataforma: "Airbnb",
+                    nota: "ACCESIBLE: Estudio pequeño (17m2) INDEPENDIENTE en edificio con ASCENSOR."
+                },
+                {
+                    nombre: "Amplio apto. luminoso",
+                    barrio: "Zona Residencial",
+                    distrito: "Madrid",
+                    precio: 1503, // Conversión aprox de 6.46M COP
+                    rating: 4.86,
+                    camas: 1,
+                    url: "https://www.airbnb.com.co/rooms/44841990",
+                    plataforma: "Airbnb",
+                    nota: "ACCESIBLE: Habitación en piso compartido (6ª planta) con ASCENSOR."
+                }
+            ],
+            currency: 'EUR',
+            exchangeRate: 1.05
+        };
+
+        function formatMoney(value) {
+            if (typeof value !== 'number') return 'Consultar';
+            const display = state.currency === 'USD' ? value * state.exchangeRate : value;
+            const label = state.currency === 'USD' ? 'USD' : 'EUR';
+            return `${label} ${Math.round(display).toLocaleString('es-ES')}`;
+        }
+
+        function renderResults() {
+            const resultsEl = document.getElementById('results');
+            if (!resultsEl) return;
+
+            if (state.alojamientos.length === 0) {
+                resultsEl.innerHTML = `
+                    <div class="empty-state">
+                        <p>Todavía no has añadido ningún alojamiento.</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Pásame los enlaces para empezar a poblar esta lista.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            resultsEl.innerHTML = state.alojamientos.map(item => {
+                const location = [item.barrio, item.distrito].filter(Boolean).join(' - ');
+                const noteHtml = item.nota ? `<div class="result-meta" style="margin-top:0.5rem; color: ${item.nota.includes('IMPORTANTE') ? '#f87171' : 'var(--text-secondary)'}; font-weight: ${item.nota.includes('IMPORTANTE') ? '700' : '400'}">${item.nota}</div>` : '';
+                return `
+                    <div class="result-card">
+                        <div class="result-title">${item.nombre}</div>
+                        <div class="result-meta">${location || '-'}</div>
+                        <div class="result-price">${formatMoney(item.precio)}</div>
+                        <div class="result-meta">Rating: ${item.rating || '-'}</div>
+                        ${item.camas ? `<div class="result-meta">Camas: ${item.camas}</div>` : ''}
+                        ${noteHtml}
+                        ${item.url && item.url !== '#' ? `<a class="result-link" href="${item.url}" target="_blank">Ver en ${item.plataforma || 'Plataforma'}</a>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function setCurrency(currency) {
+            state.currency = currency;
+            document.querySelectorAll('.currency-toggle .nav-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.currency === currency);
+            });
+            renderResults();
+        }
+
+        // Esta función será llamada cuando agreguemos nuevos datos
+        function addAlojamiento(item) {
+            state.alojamientos.push(item);
+            renderResults();
+        }
+
+        // Inicializar
+        renderResults();
+    </script>
+</body>
+
+</html>

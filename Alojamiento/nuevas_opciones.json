@@ -1,0 +1,331 @@
+{
+    "nuevas_opciones": [
+        {
+            "nombre": "Loft en Plaza Mayor",
+            "barrio": "Centro (Sol)",
+            "precio_total_eur": 1389,
+            "rating": 4.89,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Ubicación central"
+            ],
+            "url": "https://www.airbnb.es/rooms/42790937",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Alojamiento en Lavapiés",
+            "barrio": "Centro (Embajadores)",
+            "precio_total_eur": 1508,
+            "rating": null,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Económico"
+            ],
+            "url": "https://www.airbnb.es/rooms/1130264462962096214",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Apartamento en Chamberí",
+            "barrio": "Chamberí",
+            "precio_total_eur": 1607,
+            "rating": null,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Zona residencial"
+            ],
+            "url": "https://www.booking.com/hotel/es/2-single-beds-in-chamberi-quevedo-iii.es.html",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Nomad Nook",
+            "barrio": "Puente de Vallecas",
+            "precio_total_eur": 1687,
+            "rating": null,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Económico"
+            ],
+            "url": "https://www.booking.com/hotel/es/nomad-nook-in-vallecas.es.html",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Apartamento en Mirasierra",
+            "barrio": "Fuencarral",
+            "precio_total_eur": 1773,
+            "rating": null,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Zona tranquila"
+            ],
+            "url": "https://www.airbnb.com/rooms/1316414689586632995",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Loft en Chamartín",
+            "barrio": "Chamartín",
+            "precio_total_eur": 1891,
+            "rating": null,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Bien comunicado"
+            ],
+            "url": "https://www.airbnb.com/rooms/1360175651893200337",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Apartamento en Cortes",
+            "barrio": "Centro (Cortes)",
+            "precio_total_eur": 1896,
+            "rating": null,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Cerca de museos"
+            ],
+            "url": "https://www.airbnb.es/rooms/917862026556236065",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Apartamento en Palacio",
+            "barrio": "Centro (Palacio)",
+            "precio_total_eur": 1932,
+            "rating": 4.96,
+            "camas": 2,
+            "comodidades": [
+                "WiFi",
+                "Muy recomendado"
+            ],
+            "url": "https://www.airbnb.es/rooms/1130264462962096214",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Apto. Studio Salamanca",
+            "barrio": "Salamanca",
+            "precio_total_eur": 1951,
+            "rating": 4.73,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Edificio premium"
+            ],
+            "url": "https://www.airbnb.es/rooms/53401567",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Buhardilla Plaza 2 Mayo",
+            "barrio": "Centro (Malasaña)",
+            "precio_total_eur": 2070,
+            "rating": null,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Estilo bohemio"
+            ],
+            "url": "https://www.booking.com/hotel/es/buhardilla-plaza-2-de-mayo-alquiler-temporal.es.html",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Apartamento en Arganzuela",
+            "barrio": "Arganzuela",
+            "precio_total_eur": 2133,
+            "rating": 4.90,
+            "camas": 2,
+            "comodidades": [
+                "WiFi",
+                "Cerca de Atocha"
+            ],
+            "url": "https://www.airbnb.es/rooms/34002871",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Apartamentos Smart Justicia",
+            "barrio": "Centro (Justicia)",
+            "precio_total_eur": 2179,
+            "rating": 6.4,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Zona moderna"
+            ],
+            "url": "https://www.booking.com/hotel/es/apartamentos-smartrenting-justicia.en-gb.html",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Exyca Malasaña",
+            "barrio": "Centro (Malasaña)",
+            "precio_total_eur": 2230,
+            "rating": 7.2,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Cerca de ocio"
+            ],
+            "url": "https://www.airbnb.es/rooms/1070253869797985203",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Piso La Cascabela",
+            "barrio": "Carabanchel",
+            "precio_total_eur": 2254,
+            "rating": 4.86,
+            "camas": 2,
+            "comodidades": [
+                "WiFi",
+                "Amplio"
+            ],
+            "url": "https://www.airbnb.es/rooms/1225573426217462060",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Apartamento EconoStay Chueca",
+            "barrio": "Centro (Chueca)",
+            "precio_total_eur": 2297,
+            "rating": 6.8,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Centro histórico"
+            ],
+            "url": "https://www.booking.com/hotel/es/smartrenting-chueca.es.html",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Apartamento EconoStay Sol",
+            "barrio": "Centro (Sol)",
+            "precio_total_eur": 2332,
+            "rating": 7.3,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Km 0"
+            ],
+            "url": "https://www.booking.com/hotel/es/smartrenting-sol.es.html",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Apartamento MDL92",
+            "barrio": "Tetuán",
+            "precio_total_eur": 2377,
+            "rating": null,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Moderno"
+            ],
+            "url": "https://www.booking.com/hotel/es/apartment-mdl92.es.html",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Limehome Santa Ana",
+            "barrio": "Centro (Huertas)",
+            "precio_total_eur": 2461,
+            "rating": 8.3,
+            "camas": 2,
+            "comodidades": [
+                "WiFi",
+                "Ascensor"
+            ],
+            "url": "https://www.booking.com/hotel/es/limehome-madrid-calle-de-santa-ana.html",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Apto. Prosperidad",
+            "barrio": "Chamartín",
+            "precio_total_eur": 2530,
+            "rating": 8.7,
+            "camas": 2,
+            "comodidades": [
+                "WiFi",
+                "Luminoso"
+            ],
+            "url": "#",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Apartamento Universidad",
+            "barrio": "Centro (Malasaña)",
+            "precio_total_eur": 2630,
+            "rating": null,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Muy céntrico"
+            ],
+            "url": "https://www.airbnb.es/rooms/1071477543954605986",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Ático La Cascabela",
+            "barrio": "Carabanchel",
+            "precio_total_eur": 2711,
+            "rating": 5.0,
+            "camas": 2,
+            "comodidades": [
+                "WiFi",
+                "Terraza privada"
+            ],
+            "url": "https://www.airbnb.es/rooms/1288301836924952747",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Apartamento Legazpi",
+            "barrio": "Arganzuela",
+            "precio_total_eur": 2782,
+            "rating": 7.7,
+            "camas": 4,
+            "comodidades": [
+                "WiFi",
+                "Ascensor"
+            ],
+            "url": "#",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Apartamento en Gran Vía",
+            "barrio": "Centro (Malasaña)",
+            "precio_total_eur": 2923,
+            "rating": 4.94,
+            "camas": 2,
+            "comodidades": [
+                "WiFi",
+                "Ascensor"
+            ],
+            "url": "https://www.airbnb.es/rooms/42790937",
+            "plataforma": "Airbnb"
+        },
+        {
+            "nombre": "Compostela Suites",
+            "barrio": "San Blas",
+            "precio_total_eur": 3317,
+            "rating": 7.9,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Piscina",
+                "Accesible"
+            ],
+            "url": "https://www.booking.com/hotel/es/compostela-suites.es.html",
+            "plataforma": "Booking"
+        },
+        {
+            "nombre": "Limehome Luchana",
+            "barrio": "Chamberí",
+            "precio_total_eur": 3391,
+            "rating": 9.1,
+            "camas": 1,
+            "comodidades": [
+                "WiFi",
+                "Ascensor",
+                "Premium"
+            ],
+            "url": "https://www.booking.com/hotel/es/limehome-madrid-calle-de-luchana.html",
+            "plataforma": "Booking"
+        }
+    ]
+}

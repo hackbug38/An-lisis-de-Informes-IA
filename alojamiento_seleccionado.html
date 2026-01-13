@@ -184,6 +184,8 @@
             <div class="currency-toggle">
                 <button class="nav-btn active" data-currency="EUR" onclick="setCurrency('EUR')">EUR</button>
                 <button class="nav-btn" data-currency="USD" onclick="setCurrency('USD')">USD</button>
+                <button id="sortBtn" class="nav-btn" onclick="togglePriceSort()" style="margin-left: auto;">Más baratos
+                    primero</button>
             </div>
 
             <div id="results" class="results-grid">
@@ -332,7 +334,8 @@
                 }
             ],
             currency: 'EUR',
-            exchangeRate: 1.05
+            exchangeRate: 1.05,
+            sortByPrice: false
         };
 
         function formatMoney(value) {
@@ -346,7 +349,12 @@
             const resultsEl = document.getElementById('results');
             if (!resultsEl) return;
 
-            if (state.alojamientos.length === 0) {
+            let displayData = [...state.alojamientos];
+            if (state.sortByPrice) {
+                displayData.sort((a, b) => (a.precio || Infinity) - (b.precio || Infinity));
+            }
+
+            if (displayData.length === 0) {
                 resultsEl.innerHTML = `
                     <div class="empty-state">
                         <p>Todavía no has añadido ningún alojamiento.</p>
@@ -356,7 +364,7 @@
                 return;
             }
 
-            resultsEl.innerHTML = state.alojamientos.map(item => {
+            resultsEl.innerHTML = displayData.map(item => {
                 const location = [item.barrio, item.distrito].filter(Boolean).join(' - ');
                 const noteHtml = item.nota ? `<div class="result-meta" style="margin-top:0.5rem; color: ${item.nota.includes('IMPORTANTE') ? '#f87171' : 'var(--text-secondary)'}; font-weight: ${item.nota.includes('IMPORTANTE') ? '700' : '400'}">${item.nota}</div>` : '';
                 return `
@@ -375,9 +383,16 @@
 
         function setCurrency(currency) {
             state.currency = currency;
-            document.querySelectorAll('.currency-toggle .nav-btn').forEach(btn => {
+            document.querySelectorAll('.currency-toggle .nav-btn[data-currency]').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.currency === currency);
             });
+            renderResults();
+        }
+
+        function togglePriceSort() {
+            state.sortByPrice = !state.sortByPrice;
+            const sortBtn = document.getElementById('sortBtn');
+            sortBtn.classList.toggle('active', state.sortByPrice);
             renderResults();
         }
 

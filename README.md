@@ -4,7 +4,7 @@ Este proyecto es un dashboard interactivo diseñado para visualizar y comparar p
 
 ## 🚀 Ver Online
 
-**[Madrid vs Sevilla](https://hackbug38.github.io/An-lisis-de-Informes-IA/)** | **[Madrid vs Valencia](https://hackbug38.github.io/An-lisis-de-Informes-IA/index_madrid_valencia.html)** | **[Alojamiento Detallado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_detallado.html)** | **[Alojamiento Seleccionado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_seleccionado.html)**
+**[Madrid vs Sevilla](https://hackbug38.github.io/An-lisis-de-Informes-IA/)** | **[Madrid vs Valencia](https://hackbug38.github.io/An-lisis-de-Informes-IA/index_madrid_valencia.html)** | **[Alojamiento Detallado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_detallado.html)** | **[Alojamiento Seleccionado](https://hackbug38.github.io/An-lisis-de-Informes-IA/alojamiento_seleccionado.html)** | **[BeMadrid (Portal)](https://bemadrid.es/)**
 
 ## 🎯 Comparativas Disponibles
 

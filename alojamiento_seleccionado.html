@@ -58,7 +58,19 @@
 
         .subtitle {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .emoji-svg {
+            width: 1.25em;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            vertical-align: middle;
         }
 
         .card {
@@ -177,7 +189,14 @@
     <div class="container">
         <header>
             <h1>Alojamientos en Madrid</h1>
-            <p class="subtitle">❤️ ✈️</p>
+            <p class="subtitle">
+                <span>❤️</span>
+                <span>✈️</span>
+                <svg class="emoji-svg" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="750" height="500" fill="#AD1519" />
+                    <rect width="750" height="250" y="125" fill="#FABD00" />
+                </svg>
+            </p>
         </header>
 
         <div class="card">

@@ -142,7 +142,7 @@ El dashboard utiliza un diseño moderno con:
 ### Implementación de Panel de Selección Personalizada (`alojamiento_seleccionado.html`)
 
 - Se creó un nuevo tablero para la selección manual y comparación de alojamientos específicos.
-- Se añadieron **13 alojamientos seleccionados** con detalles de accesibilidad y precios unificados.
+- Se añadieron **17 alojamientos seleccionados** con detalles de accesibilidad y precios unificados.
 - Se implementó una **función de ordenación dinámica por precio** (menor a mayor).
 - Se integró soporte multi-moneda (EUR/USD) sincronizado con el renderizado dinámico.
 
